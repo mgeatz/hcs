@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 
 app.get('/', function (req, res) {
   var userIP = ip.address();
-  console.log('IP = ', userIp);
+  console.log('IP = ', userIP);
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
