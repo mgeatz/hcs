@@ -23,14 +23,14 @@ $(document).ready(function () {
           case 'photos':
             console.log('photos case');
             if (mediaType === '.jpg' || mediaType === '.png') {
-              $media.append('<a href="'+value+'">'+
-                '<img width="40" style="border:5px solid #bbb; border-radius: 2px;" src="'+value+'"/></a>');
+              $media.append('<a href="'+value+'"><img width="60" '+
+                'style="border:5px solid #ddd; border-radius: 2px; margin: 5px;" src="'+value+'"/></a>');
             }
             break;
           case 'movies':
             console.log('movies case');
             if (mediaType === '.mov' || mediaType === '.3gp' || mediaType === '.mp4') {
-              $media.append('<a href="'+value+'"></a>');
+              $media.append('<a href="'+value+'">'+value+'</a>');
             }
             break;
           case 'docs':
