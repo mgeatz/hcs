@@ -23,10 +23,10 @@ $(document).ready(function () {
           case 'photos':
             console.log('photos case');
             if (mediaType === '.jpg' || mediaType === '.png') {
-              $media.append('<a href="'+value+'" target="_blank"><img width="60" '+
-                'style="border:5px solid #ddd; border-radius: 2px; margin: 5px;" src="'+value+'"/><br>'+
-                '<sup><u>EDIT</u></sup>'+
-                '</a>');
+              $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;'+
+                ' display:inline-block; margin: 5px;"><img width="60" src="'+value+'"/><br>'+
+                '<a href="'+value+'" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>>'+
+                '</div>');
             }
             break;
           case 'movies':
