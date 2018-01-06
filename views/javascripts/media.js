@@ -24,7 +24,9 @@ $(document).ready(function () {
             console.log('photos case');
             if (mediaType === '.jpg' || mediaType === '.png') {
               $media.append('<a href="'+value+'" target="_blank"><img width="60" '+
-                'style="border:5px solid #ddd; border-radius: 2px; margin: 5px;" src="'+value+'"/></a>');
+                'style="border:5px solid #ddd; border-radius: 2px; margin: 5px;" src="'+value+'"/><br>'+
+                '<sup><u>EDIT</u></sup>'+
+                '</a>');
             }
             break;
           case 'movies':
