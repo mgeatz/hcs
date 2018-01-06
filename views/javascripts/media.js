@@ -24,8 +24,8 @@ $(document).ready(function () {
             console.log('photos case');
             if (mediaType === '.jpg' || mediaType === '.png') {
               $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;'+
-                ' display:inline-block; margin: 5px;"><img width="60" src="'+value+'"/><br>'+
-                '<a href="'+value+'" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>>'+
+                ' display:inline-block; margin: 5px;"><img width="70" src="'+value+'"/><br>'+
+                '<a href="'+value+'" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>'+
                 '</div>');
             }
             break;
