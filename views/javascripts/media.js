@@ -30,7 +30,7 @@ $(document).ready(function () {
           case 'movies':
             console.log('movies case');
             if (mediaType === '.mov' || mediaType === '.3gp' || mediaType === '.mp4') {
-              $media.append('<a href="'+value+'">'+value+'</a>');
+              $media.append('<a href="'+value+'" style="color: white;">'+value+'</a><br>');
             }
             break;
           case 'docs':
