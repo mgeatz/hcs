@@ -13,7 +13,7 @@ $(document).ready(function () {
   }
 
   var getMedia = function (mediaChoice) {
-    mediaFiles.forEach(value, index) {
+    mediaFiles.forEach((value, index) {
       var $media = $('#media'),
         mediaType = value.toLowerCase().substr(value.length-4);
       if (mediaType.split('')[0] === '.') {
@@ -53,8 +53,8 @@ $(document).ready(function () {
       } else if (mediaType.indexOf('.sh') !== -1) {
         console.log('script found - ', value, ' target for removal.');
       }
-    }
-  }
+    });
+  };
 
   $('#photos').click(function(){
     getMedia('photos');
