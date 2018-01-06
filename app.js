@@ -38,8 +38,9 @@ app.post('/upload', function (req, res) {
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function (field, file) {
-    var randomNumber = Math.random(),
-      specialId = randomNumber.toString().substr(2,5),
+    // specialId produces "WeekDay-Month-Day-Year-Hour"
+    var date = new Date(),
+      specialId = date.toString().split(':')[0].split(' ').join('-'),
       theFile = path.join(form.uploadDir, specialId + '-' + file.name );
     console.log('uploading: ', theFile);
     fs.rename(file.path, theFile);
