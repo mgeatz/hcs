@@ -65,7 +65,7 @@ app.get('/mediaFiles', function (req, res) {
     mediaArray = [];
 
   fs.readdir(mediaFolder, (err, files) => {
-    files.forEach((file = > {
+    files.forEach((file) => {
     console.log('/tray1/root/media/', file);
     mediaArray.push('/tray1/root/media/' + file);
   });
