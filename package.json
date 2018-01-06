@@ -1,13 +1,11 @@
 {
-  "name": "file-uploader",
+  "name": "hcs",
   "version": "1.0.0",
   "description": "An AJAX file uploader using JS and NodeJS",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Fady Makram",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.16.2",
     "formidable": "^1.1.1"
