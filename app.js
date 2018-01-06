@@ -1,8 +1,10 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var formidable = require('formidable');
-var fs = require('fs');
+var express = require('express'),
+  app = express(),
+  path = require('path'),
+  formidable = require('formidable'),
+  fs = require('fs'),
+  ip = require('ip'),
+  git = require('git-rev');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,6 +18,8 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
+  var userIP = ip.address();
+  console.log('IP = ', userIp);
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
@@ -41,7 +45,7 @@ app.post('/upload', function (req, res) {
     // specialId produces "WeekDay-Month-Day-Year-Hour"
     var date = new Date(),
       specialId = date.toString().split(':')[0].split(' ').join('-'),
-      theFile = path.join(form.uploadDir, specialId + '-' + file.name );
+      theFile = path.join(form.uploadDir, specialId + '-' + file.name);
     console.log('uploading: ', theFile);
     fs.rename(file.path, theFile);
   });
@@ -67,13 +71,13 @@ app.get('/mediaFiles', function (req, res) {
 
   fs.readdir(mediaFolder, (err, files) => {
     files.forEach((file) => {
-    console.log('/tray1/root/media/', file);
-    mediaArray.push('/tray1/root/media/' + file);
-  });
-  res.send(JSON.stringify({media: mediaArray}, null, 3));
-  console.log('mediaArray ', mediaArray);
+      console.log('/tray1/root/media/', file);
+      mediaArray.push('/tray1/root/media/' + file);
+    });
+    res.send(JSON.stringify({media: mediaArray}, null, 3));
+    console.log('mediaArray ', mediaArray);
 
-});
+  });
 
 
 });
