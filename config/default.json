@@ -1,5 +1,4 @@
 {
-    // module configs
     "api": {
         "upload": "/upload",
         "mediaFiles": "/mediaFiles",
@@ -8,7 +7,7 @@
         "mediaFiles4": "/mediaFiles4",
         "version": "/version",
         "logs": "/logs"
-    }
+    },
     "diskLocations": {
         "tray1": "../../../../tray1/root/media",
         "tray2": "../../../../tray2/root/media",
