@@ -203,10 +203,12 @@ app.get(api.mediaFiles4, function (req, res) {
  * @API get version number
  */
 app.get(api.version, function (req, res) {
-  // get version number
+  var gitCommitSha;
   git.short(function (str) {
     console.log('short', str)
+    gitCommitSha = str;
   });
+  res.send(JSON.stringify({version: gitCommitSha}, null, 3));
 });
 
 /**
