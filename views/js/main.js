@@ -1,13 +1,13 @@
-if (location.hash.length !== 7) {
+if (location.search.length !== 7) {
   $.ajax({
     url: '/version',
     success: function (sha) {
       console.log('version = ', sha);
       var versionNumber = JSON.parse(sha).version;
       $('#version').text(versionNumber);
-      location.hash=versionNumber;
+      location.search=versionNumber;
     }
   });
 } else {
-  $('#version').text(location.hash);
+  $('#version').text(location.search);
 }
