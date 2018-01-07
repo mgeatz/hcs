@@ -202,23 +202,18 @@ app.get(api.mediaFiles4, function (req, res) {
 /**
  * @API get version number
  */
-app.get(api.version, function () {
+app.get(api.version, function (req, res) {
   // get version number
   git.short(function (str) {
     console.log('short', str)
-    // => aefdd94
   });
 });
 
 /**
  * @API get version number
  */
-app.get(api.version, function () {
-  // get version number
-  git.short(function (str) {
-    console.log('short', str)
-    // => aefdd94
-  });
+app.get(api.logs, function (req, res) {
+  console.log('service coming soon.');
 });
 
 /**
