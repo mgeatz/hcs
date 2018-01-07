@@ -107,7 +107,7 @@ app.post(api.upload, function (req, res) {
     // specialId produces "WeekDay-Month-Day-Year-Hour"
     var date = new Date(),
       specialId = date.toString().split(':')[0].split(' ').join('-'),
-      theFile = path.join(form.uploadDir, specialId + '-' + file.name);
+      theFile = path.join(form.uploadDir, specialId + '-BTAG__TAGE-' + file.name);
     console.log('uploading: ', theFile);
     fs.rename(file.path, theFile);
   });
