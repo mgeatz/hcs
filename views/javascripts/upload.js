@@ -1,11 +1,3 @@
-$.ajax({
-  url: '/version',
-  success: function (sha) {
-    console.log('version = ', sha);
-    $('#version').text(sha.version);
-  }
-});
-
 $('.upload-btn').on('click', function () {
   var $progressBar = $('.progress-bar');
   $('#upload-input').click();
