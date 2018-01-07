@@ -1,4 +1,4 @@
-$(document).ready(function () {
+
 
   var mediaFiles;
 
@@ -63,12 +63,7 @@ $(document).ready(function () {
     getMedia('movies');
   });
 
-  $('#audio').click(function(){
-    getMedia('audio');
-  });
-
   $('#docs').click(function(){
     getMedia('docs');
   });
 
-});

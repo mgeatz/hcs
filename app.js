@@ -4,40 +4,102 @@ var express = require('express'),
   formidable = require('formidable'),
   fs = require('fs'),
   ip = require('ip'),
-  git = require('git-rev');
+  git = require('git-rev'),
+  config = require('config'),
+  api = config.get('api');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ***** WHITELIST ***** //
+
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.23:3000');
-  res.setHeader('Access-Control-Allow-Origin', 'http://geatz:3000');
+  let whitelist = config.get('whitelist')
+  for(let i=0; i<whitelist.length; i++){
+    res.setHeader('Access-Control-Allow-Origin', 'http://' + whitelist[i]);
+  }
+  // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.23:3000');
+  // res.setHeader('Access-Control-Allow-Origin', 'http://geatz:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
 
+// ******* ROUTES ****** //
+
+/**
+ * @ROUTE for upload
+ * @Description Transition the user to index
+ * @Security Whitelist IP enablement
+ */
 app.get('/', function (req, res) {
-  var userIP = ip.address();
-  console.log('IP = ', userIP);
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
+/**
+ * @ROUTE media for tray1
+ */
 app.get('/media', function (req, res) {
   console.log('dirname ' + __dirname);
   res.sendFile(path.join(__dirname, 'views/media.html'));
 });
 
-app.post('/upload', function (req, res) {
+/**
+ * @ROUTE media for tray2
+ */
+app.get('/media2', function (req, res) {
+  console.log('dirname ' + __dirname);
+  res.sendFile(path.join(__dirname, 'views/media2.html'));
+});
+
+/**
+ * @ROUTE media for tray3
+ */
+app.get('/media3', function (req, res) {
+  console.log('dirname ' + __dirname);
+  res.sendFile(path.join(__dirname, 'views/media3.html'));
+});
+
+/**
+ * @ROUTE media for tray4
+ */
+app.get('/media4', function (req, res) {
+  console.log('dirname ' + __dirname);
+  res.sendFile(path.join(__dirname, 'views/media4.html'));
+});
+
+/**
+ * @ROUTE media for logs
+ */
+app.get('/logs', function (req, res) {
+  console.log('dirname ' + __dirname);
+  res.sendFile(path.join(__dirname, 'views/logs.html'));
+});
+
+/**
+ * @ROUTE return list of api
+ */
+app.get('/api', function (req, res) {
+  console.log('dirname ' + __dirname);
+  res.sendFile(path.join(__dirname, 'views/api.html'));
+});
+
+// ******** API ******** //
+
+/**
+ * @API upload file to tray1
+ */
+app.post(api.upload, function (req, res) {
 
   // create an incoming form object
-  var form = new formidable.IncomingForm();
+  var form = new formidable.IncomingForm(),
+    tray1 = config.get('diskLocations.tray1');
 
   // specify that we want to allow the user to upload multiple files in a single request
   form.multiples = true;
 
   // store all uploads in the /uploads directory
-  form.uploadDir = path.join(__dirname, '../../../../tray1/root/media');
+  form.uploadDir = path.join(__dirname, tray1);
 
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
@@ -65,7 +127,10 @@ app.post('/upload', function (req, res) {
 
 });
 
-app.get('/mediaFiles', function (req, res) {
+/**
+ * @API Get all files from tray1
+ */
+app.get(api.mediaFiles, function (req, res) {
   var mediaFolder = path.join(__dirname, '/public/tray1/root/media'),
     mediaArray = [];
 
@@ -75,68 +140,141 @@ app.get('/mediaFiles', function (req, res) {
       mediaArray.push('/tray1/root/media/' + file);
     });
     res.send(JSON.stringify({media: mediaArray}, null, 3));
-    console.log('mediaArray ', mediaArray);
+    console.log('mediaArray1 ', mediaArray);
 
   });
-
-
 });
 
-app.get('/files', function (req, res) {
-  res.sendFile(path.join(__dirname, 'myfiles.json'));
-});
+/**
+ * @API Get all files from tray2
+ */
+app.get(api.mediaFiles2, function (req, res) {
+  var mediaFolder = path.join(__dirname, '/public/tray2/root/media'),
+    mediaArray = [];
 
-app.get('/refreshFiles', function (req, res) {
-
-  var jsonObj = [], time = new Date(), loc = path.join(__dirname, '../../../../tray1/root/media/');
-  console.log('Refresh myfiles.json file at ' + time);
-  fs.readdir(loc, function (err, files) {
-    if (err) return;
-    files.forEach(function (f, index) {
-      console.log('Files: ' + f);
-      if (index === 0) {
-        jsonObj.push('{"' + index + '":"' + loc + f + '"');
-      } else if (index === files.length - 1) {
-        jsonObj.push('"' + index + '":"' + loc + f + '"}');
-      } else {
-        jsonObj.push('"' + index + '":"' + loc + f + '"');
-      }
+  fs.readdir(mediaFolder, (err, files) => {
+    files.forEach((file) => {
+      console.log('/tray2/root/media/', file);
+      mediaArray.push('/tray2/root/media/' + file);
     });
-  });
+    res.send(JSON.stringify({media: mediaArray}, null, 3));
+    console.log('mediaArray2 ', mediaArray);
 
-  fs.writeFile(path.join(__dirname, 'myfiles.json'), jsonObj, function (err) {
-    if (err) {
-      return console.log(err);
-    }
-    console.log("The file was saved!");
-  });
-
-  res.send(JSON.stringify({refresh: 'myfile.json'}, null, 3));
-
-});
-
-var jsonObj = []
-
-fs.readdir(path.join(__dirname, '../../../../tray1/root/media'), function (err, files) {
-  if (err) return;
-  files.forEach(function (f, index) {
-    console.log('Files: ' + f);
-    if (index === 0) {
-      jsonObj.push('{"' + index + '":"' + f + '"');
-    } else if (index === files.length - 1) {
-      jsonObj.push('"' + index + '":"' + f + '"}');
-    } else {
-      jsonObj.push('"' + index + '":"' + f + '"');
-    }
   });
 });
 
-fs.writeFile(path.join(__dirname, 'myfiles.json'), jsonObj, function (err) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log("The file was saved!");
+/**
+ * @API Get all files from tray3
+ */
+app.get(api.mediaFiles3, function (req, res) {
+  var mediaFolder = path.join(__dirname, '/public/tray3/root/media'),
+    mediaArray = [];
+
+  fs.readdir(mediaFolder, (err, files) => {
+    files.forEach((file) => {
+      console.log('/tray3/root/media/', file);
+      mediaArray.push('/tray3/root/media/' + file);
+    });
+    res.send(JSON.stringify({media: mediaArray}, null, 3));
+    console.log('mediaArray3 ', mediaArray);
+
+  });
 });
+
+/**
+ * @API Get all files from tray4
+ */
+app.get(api.mediaFiles4, function (req, res) {
+  var mediaFolder = path.join(__dirname, '/public/tray4/root/media'),
+    mediaArray = [];
+
+  fs.readdir(mediaFolder, (err, files) => {
+    files.forEach((file) => {
+      console.log('/tray4/root/media/', file);
+      mediaArray.push('/tray4/root/media/' + file);
+    });
+    res.send(JSON.stringify({media: mediaArray}, null, 3));
+    console.log('mediaArray4 ', mediaArray);
+
+  });
+});
+
+/**
+ * @API get version number
+ */
+app.get(api.version, function () {
+  // get version number
+  git.short(function (str) {
+    console.log('short', str)
+    // => aefdd94
+  });
+});
+
+/**
+ * @API get version number
+ */
+app.get(api.version, function () {
+  // get version number
+  git.short(function (str) {
+    console.log('short', str)
+    // => aefdd94
+  });
+});
+
+/**
+ * @API
+ */
+// app.get('/refreshFiles', function (req, res) {
+//
+//   var jsonObj = [], time = new Date(), loc = path.join(__dirname, '../../../../tray1/root/media/');
+//   console.log('Refresh myfiles.json file at ' + time);
+//   fs.readdir(loc, function (err, files) {
+//     if (err) return;
+//     files.forEach(function (f, index) {
+//       console.log('Files: ' + f);
+//       if (index === 0) {
+//         jsonObj.push('{"' + index + '":"' + loc + f + '"');
+//       } else if (index === files.length - 1) {
+//         jsonObj.push('"' + index + '":"' + loc + f + '"}');
+//       } else {
+//         jsonObj.push('"' + index + '":"' + loc + f + '"');
+//       }
+//     });
+//   });
+//
+//   fs.writeFile(path.join(__dirname, 'myfiles.json'), jsonObj, function (err) {
+//     if (err) {
+//       return console.log(err);
+//     }
+//     console.log("The file was saved!");
+//   });
+//
+//   res.send(JSON.stringify({refresh: 'myfile.json'}, null, 3));
+//
+// });
+
+// var jsonObj = []
+//
+// fs.readdir(path.join(__dirname, '../../../../tray1/root/media'), function (err, files) {
+//   if (err) return;
+//   files.forEach(function (f, index) {
+//     console.log('Files: ' + f);
+//     if (index === 0) {
+//       jsonObj.push('{"' + index + '":"' + f + '"');
+//     } else if (index === files.length - 1) {
+//       jsonObj.push('"' + index + '":"' + f + '"}');
+//     } else {
+//       jsonObj.push('"' + index + '":"' + f + '"');
+//     }
+//   });
+// });
+//
+// fs.writeFile(path.join(__dirname, 'myfiles.json'), jsonObj, function (err) {
+//   if (err) {
+//     return console.log(err);
+//   }
+//   console.log("The file was saved!");
+// });
 
 
 var server = app.listen(3000, function () {

@@ -1,25 +1,20 @@
-$(document).ready(function () {
-
-  if (location.pathname === 'media') {
-    $.ajax({
-      url: '/files',
-      success: function (res) {
-        console.log('res ', res);
-      }
-    });
+$.ajax({
+  url: '/version',
+  success: function (sha) {
+    console.log('version = ', sha);
+    $('#version').text(sha);
   }
-
 });
-
 
 $('.upload-btn').on('click', function () {
-  console.log('hey');
+  var $progressBar = $('.progress-bar');
   $('#upload-input').click();
-  $('.progress-bar').text('0%');
-  $('.progress-bar').width('0%');
+  $progressBar.text('0%');
+  $progressBar.width('0%');
 });
 $('#upload-input').on('change', function () {
-  var files = $(this).get(0).files;
+  var files = $(this).get(0).files,
+    $progressBar = $('.progress-bar');
   if (files.length > 0) {
     var formData = new FormData();
     for (var i = 0; i < files.length; i++) {
@@ -41,10 +36,10 @@ $('#upload-input').on('change', function () {
           if (evt.lengthComputable) {
             var percentComplete = evt.loaded / evt.total;
             percentComplete = parseInt(percentComplete * 100);
-            $('.progress-bar').text(percentComplete + '%');
-            $('.progress-bar').width(percentComplete + '%');
+            $progressBar.text(percentComplete + '%');
+            $progressBar.width(percentComplete + '%');
             if (percentComplete === 100) {
-              $('.progress-bar').html('Done');
+              $progressBar.html('Done');
             }
           }
         }, false);

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>HCS - Home Cloud Server</title>
+    <title>Tray 1 - Home Cloud Server</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="css/styles.css" rel="stylesheet">
@@ -14,12 +14,21 @@
 <nav class="navbar navbar-fixed-top" style="background: #023869;">
     <div class="container-fluid">
         <div class="navbar-header" style="padding: 15px; text-align: left;">
-            <a href="/" style="color: #4790d3;">Geatz Home Cloud Server</a></div>
+            <a href="/" style="color: #4790d3;">Home Cloud Server</a></div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/" class="nav-item nav-link">Home</a></li>
-                <li><a href="/media" class="nav-item nav-link">Media</a></li>
-                <li><a href="/mediaFiles" class="nav-item nav-link">Raw Files</a></li>
+                <li><a href="/" class="nav-item nav-link">Upload</a></li>
+                <li>
+                    <a data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false" class="active dropdown-toggle">Media <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/media" class="nav-item nav-link">Media Tray 1</a></li>
+                        <li><a href="/media2" class="nav-item nav-link">Media Tray 2</a></li>
+                        <li><a href="/media3" class="nav-item nav-link">Media Tray 3</a></li>
+                        <li><a href="/media4" class="nav-item nav-link">Media Tray 4</a></li>
+                    </ul>
+                </li>
                 <li><a href="/api" class="nav-item nav-link">API</a></li>
                 <li><a href="/logs" class="nav-item nav-link">Logs</a></li>
             </ul>
@@ -44,7 +53,7 @@
 </div>
 
 <nav class="footer navbar-fixed-bottom">
-    git version goes here #####
+    <span id="version"></span>
 </nav>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
