@@ -1,13 +1,13 @@
-var version = sessionStorage.getItem('version');
-if (version === null) {
+if (location.hash.length !== 7) {
   $.ajax({
     url: '/version',
     success: function (sha) {
       console.log('version = ', sha);
-      $('#version').text(JSON.parse(sha).version);
-      sessionStorage.setItem('version', JSON.parse(sha).version);
+      var versionNumber = JSON.parse(sha).version;
+      $('#version').text(versionNumber);
+      location.hash=versionNumber;
     }
   });
 } else {
-  $('#version').text(sessionStorage.getItem('version'));
+  $('#version').text(location.hash);
 }
