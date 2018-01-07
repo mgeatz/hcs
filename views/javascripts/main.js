@@ -8,4 +8,6 @@ if (version === null) {
       sessionStorage.setItem('version', JSON.parse(sha).version);
     }
   });
+} else {
+  $('#version').text(sessionStorage.getItem('version'));
 }
