@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
   if (whitelist.indexOf(clientIp) !== -1) {
     next();
   } else {
-    console.log('Non-whitelist IP address attempted access');
+    console.log('Non-whitelist IP address attempted access', clientIp);
     return false;
   }
 });
@@ -128,62 +128,6 @@ app.get(api.v1.hcsName, function (req, res) {
   let hcsName = config.get('hcsName');
   res.send(JSON.stringify({hcsName: hcsName}, null, 3));
 });
-
-/**
- * @API
- */
-// app.get('/refreshFiles', function (req, res) {
-//
-//   var jsonObj = [], time = new Date(), loc = path.join(__dirname, '../../../../tray1/root/media/');
-//   console.log('Refresh myfiles.json file at ' + time);
-//   fs.readdir(loc, function (err, files) {
-//     if (err) return;
-//     files.forEach(function (f, index) {
-//       console.log('Files: ' + f);
-//       if (index === 0) {
-//         jsonObj.push('{"' + index + '":"' + loc + f + '"');
-//       } else if (index === files.length - 1) {
-//         jsonObj.push('"' + index + '":"' + loc + f + '"}');
-//       } else {
-//         jsonObj.push('"' + index + '":"' + loc + f + '"');
-//       }
-//     });
-//   });
-//
-//   fs.writeFile(path.join(__dirname, 'myfiles.json'), jsonObj, function (err) {
-//     if (err) {
-//       return console.log(err);
-//     }
-//     console.log("The file was saved!");
-//   });
-//
-//   res.send(JSON.stringify({refresh: 'myfile.json'}, null, 3));
-//
-// });
-
-// var jsonObj = []
-//
-// fs.readdir(path.join(__dirname, '../../../../tray1/root/media'), function (err, files) {
-//   if (err) return;
-//   files.forEach(function (f, index) {
-//     console.log('Files: ' + f);
-//     if (index === 0) {
-//       jsonObj.push('{"' + index + '":"' + f + '"');
-//     } else if (index === files.length - 1) {
-//       jsonObj.push('"' + index + '":"' + f + '"}');
-//     } else {
-//       jsonObj.push('"' + index + '":"' + f + '"');
-//     }
-//   });
-// });
-//
-// fs.writeFile(path.join(__dirname, 'myfiles.json'), jsonObj, function (err) {
-//   if (err) {
-//     return console.log(err);
-//   }
-//   console.log("The file was saved!");
-// });
-
 
 let server = app.listen(3000, function () {
   console.log('Server listening on port 3000');
