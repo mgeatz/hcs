@@ -39,54 +39,6 @@ app.get('/:routePath', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/' + req.params.routePath + '.html'));
 });
 
-/**
- * @ROUTE media for tray1
- */
-app.get('/media', function (req, res) {
-  console.log('dirname ' + __dirname);
-  res.sendFile(path.join(__dirname, 'views/media.html'));
-});
-
-/**
- * @ROUTE media for tray2
- */
-app.get('/media2', function (req, res) {
-  console.log('dirname ' + __dirname);
-  res.sendFile(path.join(__dirname, 'views/media2.html'));
-});
-
-/**
- * @ROUTE media for tray3
- */
-app.get('/media3', function (req, res) {
-  console.log('dirname ' + __dirname);
-  res.sendFile(path.join(__dirname, 'views/media3.html'));
-});
-
-/**
- * @ROUTE media for tray4
- */
-app.get('/media4', function (req, res) {
-  console.log('dirname ' + __dirname);
-  res.sendFile(path.join(__dirname, 'views/media4.html'));
-});
-
-/**
- * @ROUTE media for logs
- */
-app.get('/logs', function (req, res) {
-  console.log('dirname ' + __dirname);
-  res.sendFile(path.join(__dirname, 'views/logs.html'));
-});
-
-/**
- * @ROUTE return list of api
- */
-app.get('/api', function (req, res) {
-  console.log('dirname ' + __dirname);
-  res.sendFile(path.join(__dirname, 'views/api.html'));
-});
-
 // ******** API ******** //
 
 /**
