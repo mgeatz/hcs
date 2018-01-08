@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
  * @ROUTE other routes
  */
 app.get('/:routePath', function (req, res) {
-  console.log('req.params.routePath', req);
+  console.log('req.params.routePath', req.params.routePath);
   let routePath = req.params.routePath;
   res.sendFile(path.join(__dirname, 'views/' + routePath + '.html'));
 });
