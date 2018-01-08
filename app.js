@@ -7,7 +7,7 @@ var express = require('express'),
   git = require('git-rev'),
   config = require('config'),
   api = config.get('api');
-console.log(api);
+console.log(api.v1);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ***** WHITELIST ***** //
