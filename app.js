@@ -83,25 +83,30 @@ app.post(api.upload, function (req, res) {
 /**
  * @API Get all files from tray1
  */
-app.get(api.mediaFiles, function (req, res) {
-  var mediaFolder = path.join(__dirname, '/public/tray1/root/media'),
-    mediaArray = [];
+app.get(api.v1.mediaFiles + '/:routePath', function (req, res) {
 
-  fs.readdir(mediaFolder, (err, files) => {
-    files.forEach((file) => {
-      console.log('/tray1/root/media/', file);
-      mediaArray.push('/tray1/root/media/' + file);
+  console.log('req.params.routePath ', req.params.routePath);
+  if (req.params.routePath === '1') {
+    var mediaFolder = path.join(__dirname, '/public/tray1/root/media'),
+      mediaArray = [];
+
+    fs.readdir(mediaFolder, (err, files) => {
+      files.forEach((file) => {
+        console.log('/tray1/root/media/', file);
+        mediaArray.push('/tray1/root/media/' + file);
+      });
+      res.send(JSON.stringify({media: mediaArray}, null, 3));
+      console.log('mediaArray1 ', mediaArray);
+
     });
-    res.send(JSON.stringify({media: mediaArray}, null, 3));
-    console.log('mediaArray1 ', mediaArray);
+  }
 
-  });
 });
 
 /**
  * @API Get all files from tray2
  */
-app.get(api.mediaFiles2, function (req, res) {
+app.get(api.v1.mediaFiles2, function (req, res) {
   var mediaFolder = path.join(__dirname, '/public/tray2/root/media'),
     mediaArray = [];
 
@@ -119,7 +124,7 @@ app.get(api.mediaFiles2, function (req, res) {
 /**
  * @API Get all files from tray3
  */
-app.get(api.mediaFiles3, function (req, res) {
+app.get(api.v1.mediaFiles3, function (req, res) {
   var mediaFolder = path.join(__dirname, '/public/tray3/root/media'),
     mediaArray = [];
 
@@ -137,7 +142,7 @@ app.get(api.mediaFiles3, function (req, res) {
 /**
  * @API Get all files from tray4
  */
-app.get(api.mediaFiles4, function (req, res) {
+app.get(api.v1.mediaFiles4, function (req, res) {
   var mediaFolder = path.join(__dirname, '/public/tray4/root/media'),
     mediaArray = [];
 
@@ -155,7 +160,7 @@ app.get(api.mediaFiles4, function (req, res) {
 /**
  * @API get version number
  */
-app.get(api.version, function (req, res) {
+app.get(api.v1.version, function (req, res) {
 
   git.short(function (str) {
     console.log('short', str);
@@ -167,14 +172,14 @@ app.get(api.version, function (req, res) {
 /**
  * @API get logs
  */
-app.get(api.logs, function (req, res) {
+app.get(api.v1.logs, function (req, res) {
   console.log('service coming soon.');
 });
 
 /**
  * @API get hcsName
  */
-app.get(api.hcsName, function (req, res) {
+app.get(api.v1.hcsName, function (req, res) {
   console.log('service coming soon.');
   let hcsName = config.get('hcsName');
   res.send(JSON.stringify({hcsName: hcsName}, null, 3));
