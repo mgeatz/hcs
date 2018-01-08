@@ -1,13 +1,13 @@
 {
     "api": {
-        "upload": "/upload",
-        "mediaFiles": "/mediaFiles",
-        "mediaFiles2": "/mediaFiles2",
-        "mediaFiles3": "/mediaFiles3",
-        "mediaFiles4": "/mediaFiles4",
-        "version": "/version",
-        "logs": "/logs",
-        "hcsName": "/hcsName"
+        "upload": "/api/upload",
+        "mediaFiles": "/api/mediaFiles",
+        "mediaFiles2": "/api/mediaFiles2",
+        "mediaFiles3": "/api/mediaFiles3",
+        "mediaFiles4": "/api/mediaFiles4",
+        "version": "/api/version",
+        "logs": "/api/logs",
+        "hcsName": "/api/hcsName"
     },
     "diskLocations": {
         "tray1": "../../../../tray1/root/media",
