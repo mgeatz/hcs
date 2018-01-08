@@ -7,7 +7,7 @@ var express = require('express'),
   git = require('git-rev'),
   config = require('config'),
   api = config.get('api');
-console.log(api.v1);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ***** WHITELIST ***** //
@@ -50,7 +50,7 @@ app.get('/:routePath', function (req, res) {
  * @API upload file to tray1
  * @Method POST
  */
-app.post(api.upload, function (req, res) {
+app.post(api.v1.upload, function (req, res) {
   // create an incoming form object
   var form = new formidable.IncomingForm(),
     tray1 = config.get('diskLocations.tray1');
