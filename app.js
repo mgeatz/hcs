@@ -83,7 +83,7 @@ app.post(api.v1.upload, function (req, res) {
 /**
  * @API Get all files from tray1
  */
-app.get(api.v1.mediaFiles + ':routePath', function (req, res) {
+app.get(api.v1.mediaFiles, ':routePath', function (req, res) {
 
   console.log('req.params.routePath ', req.params.routePath);
   if (req.params.routePath === '1') {
