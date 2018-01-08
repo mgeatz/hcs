@@ -15,6 +15,7 @@ app.use(function (req, res, next) {
   let whitelist = config.get('whitelist'),
     clientIp = req.ip;
   console.log('ip ', clientIp);
+  return false;
   for (let i = 0; i < whitelist.length; i++) {
     res.setHeader('Access-Control-Allow-Origin', 'http://' + whitelist[i]);
   }
