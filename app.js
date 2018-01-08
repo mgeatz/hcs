@@ -33,6 +33,9 @@ app.use(function (req, res, next) {
  * @Security Whitelist IP enablement
  */
 app.get('/', function (req, res) {
+
+  console.log('req.url', req.url);
+
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
