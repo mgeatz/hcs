@@ -32,9 +32,9 @@ app.use(function (req, res, next) {
  * @Description Transition the user to index
  * @Security Whitelist IP enablement
  */
-app.get('/:tagId', function (req, res) {
+app.get('/:routePath', function (req, res) {
 
-  console.log('req.params.tagId', req.params.tagId);
+  console.log('req.params.tagId', req, req.params.routePath);
 
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
