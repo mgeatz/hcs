@@ -7,7 +7,7 @@ var express = require('express'),
   git = require('git-rev'),
   config = require('config'),
   api = config.get('api');
-
+console.log(api);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ***** WHITELIST ***** //
@@ -242,5 +242,5 @@ app.get(api.v1.hcsName, function (req, res) {
 
 
 var server = app.listen(3000, function () {
-  console.log('Server listening on port 3000', api);
+  console.log('Server listening on port 3000');
 });
