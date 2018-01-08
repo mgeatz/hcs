@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
  */
 app.get('/:routePath', function (req, res) {
 
-  console.log('req.params.routePath', req.);
+  console.log('req.params.routePath', req);
 
   // let routePath = req.params.routePath;
   //
