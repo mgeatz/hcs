@@ -36,7 +36,7 @@ app.get('/:routePath', function (req, res) {
 
   let routePath = req.params.routePath;
 
-  console.log('req.params.routePath', req.params.routePath);
+  console.log('req.params.routePath', req.params.routePath.length);
   if (routePath.length > 0) {
     res.sendFile(path.join(__dirname, 'views/' + routePath + '.html'));
   } else {
