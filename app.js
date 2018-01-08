@@ -33,16 +33,14 @@ app.use(function (req, res, next) {
  * @Security Whitelist IP enablement
  */
 app.get('/:routePath', function (req, res) {
-
   let routePath = req.params.routePath;
 
-  console.log('req.params.routePath', req.params.routePath.length);
-  if (routePath.length > 0) {
+  console.log('req.params.routePath', req.params);
+  if (routePath !== undefined) {
     res.sendFile(path.join(__dirname, 'views/' + routePath + '.html'));
   } else {
     res.sendFile(path.join(__dirname, 'views/index.html'));
   }
-
 });
 
 // ******** API ******** //
