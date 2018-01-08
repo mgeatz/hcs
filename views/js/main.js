@@ -1,7 +1,7 @@
 var version = sessionStorage.getItem('version');
 if (version === null) {
   $.ajax({
-    url: '/version',
+    url: '/api/v1/version',
     success: function (sha) {
       console.log('version = ', sha);
       $('#version').text(JSON.parse(sha).version);

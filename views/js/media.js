@@ -2,7 +2,7 @@ var mediaFiles;
 
 if (location.pathname === '/media') {
   $.ajax({
-    url: '/mediaFiles',
+    url: '/api/v1/mediaFiles',
     success: function (res) {
       console.log('res ', res);
       mediaFiles = JSON.parse(res).media;

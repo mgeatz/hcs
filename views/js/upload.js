@@ -14,7 +14,7 @@ $('#upload-input').on('change', function () {
       formData.append('uploads[]', file, file.name);
     }
     $.ajax({
-      url: '/upload',
+      url: '/api/v1/upload',
       type: 'POST',
       data: formData,
       processData: false,
