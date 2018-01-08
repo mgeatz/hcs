@@ -2,7 +2,7 @@
     "api": {
         "v1": {
             "upload": "/api/v1/upload",
-            "mediaFiles": "/api/v1/mediaFiles",
+            "mediaFiles": "/api/v1/mediaFiles/:routePath",
             "mediaFiles2": "/api/v1/mediaFiles2",
             "mediaFiles3": "/api/v1/mediaFiles3",
             "mediaFiles4": "/api/v1/mediaFiles4",
