@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
   let whitelist = config.get('whitelist')
-  for(let i=0; i<whitelist.length; i++){
+  for (let i = 0; i < whitelist.length; i++) {
     res.setHeader('Access-Control-Allow-Origin', 'http://' + whitelist[i]);
   }
   // res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.23:3000');
@@ -28,21 +28,20 @@ app.use(function (req, res, next) {
 // ******* ROUTES ****** //
 
 /**
- * @ROUTE for upload
+ * @ROUTE home
  * @Description Transition the user to index
  */
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/index.html'));
+});
+
+/**
+ * @ROUTE other routes
+ */
 app.get('/:routePath', function (req, res) {
-
   console.log('req.params.routePath', req);
-
-  // let routePath = req.params.routePath;
-  //
-  //
-  // if (routePath !== undefined) {
-  //   res.sendFile(path.join(__dirname, 'views/' + routePath + '.html'));
-  // } else {
-    res.sendFile(path.join(__dirname, 'views/index.html'));
-  //}
+  let routePath = req.params.routePath;
+  res.sendFile(path.join(__dirname, 'views/' + routePath + '.html'));
 });
 
 // ******** API ******** //
