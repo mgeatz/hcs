@@ -83,7 +83,7 @@ app.post(api.upload, function (req, res) {
 /**
  * @API Get all files from tray1
  */
-app.get(api.v1.mediaFiles, function (req, res) {
+app.get(api.v1.mediaFiles + ':routePath', function (req, res) {
 
   console.log('req.params.routePath ', req.params.routePath);
   if (req.params.routePath === '1') {
@@ -242,5 +242,5 @@ app.get(api.v1.hcsName, function (req, res) {
 
 
 var server = app.listen(3000, function () {
-  console.log('Server listening on port 3000');
+  console.log('Server listening on port 3000', api.v1.mediaFiles);
 });
