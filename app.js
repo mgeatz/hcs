@@ -48,19 +48,16 @@ app.get('/:routePath', function (req, res) {
 
 /**
  * @API upload file to tray1
+ * @Method POST
  */
 app.post(api.upload, function (req, res) {
-
   // create an incoming form object
   var form = new formidable.IncomingForm(),
     tray1 = config.get('diskLocations.tray1');
-
   // specify that we want to allow the user to upload multiple files in a single request
   form.multiples = true;
-
   // store all uploads in the /uploads directory
   form.uploadDir = path.join(__dirname, tray1);
-
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function (field, file) {
@@ -71,20 +68,16 @@ app.post(api.upload, function (req, res) {
     console.log('uploading: ', theFile);
     fs.rename(file.path, theFile);
   });
-
   // log any errors that occur
   form.on('error', function (err) {
     console.log('An error has occured: \n' + err);
   });
-
   // once all the files have been uploaded, send a response to the client
   form.on('end', function () {
     res.end('success');
   });
-
   // parse the incoming request containing the form data
   form.parse(req);
-
 });
 
 /**
@@ -172,10 +165,19 @@ app.get(api.version, function (req, res) {
 });
 
 /**
- * @API get version number
+ * @API get logs
  */
 app.get(api.logs, function (req, res) {
   console.log('service coming soon.');
+});
+
+/**
+ * @API get hcsName
+ */
+app.get(api.hcsName, function (req, res) {
+  console.log('service coming soon.');
+  let hcsName = config.get('hcsName');
+  res.send(JSON.stringify({hcsName: hcsName}, null, 3));
 });
 
 /**

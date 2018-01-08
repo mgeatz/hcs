@@ -6,7 +6,8 @@
         "mediaFiles3": "/mediaFiles3",
         "mediaFiles4": "/mediaFiles4",
         "version": "/version",
-        "logs": "/logs"
+        "logs": "/logs",
+        "hcsName": "/hcsName"
     },
     "diskLocations": {
         "tray1": "../../../../tray1/root/media",
@@ -14,5 +15,6 @@
         "tray3": "../../../../tray3/root/media",
         "tray4": "../../../../tray4/root/media"
     },
+    "hcsName": "Geatz",
     "whitelist": ["192.168.1.23:3000", "geatz:3000"]
 }
