@@ -34,9 +34,15 @@ app.use(function (req, res, next) {
  */
 app.get('/:routePath', function (req, res) {
 
-  console.log('req.params.routePath', req.params.routePath);
+  let routePath = req.params.routePath;
 
-  res.sendFile(path.join(__dirname, 'views/' + req.params.routePath + '.html'));
+  console.log('req.params.routePath', req.params.routePath);
+  if (routePath.length > 0) {
+    res.sendFile(path.join(__dirname, 'views/' + routePath + '.html'));
+  } else {
+    res.sendFile(path.join(__dirname, 'views/index.html'));
+  }
+
 });
 
 // ******** API ******** //
