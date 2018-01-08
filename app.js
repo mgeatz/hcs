@@ -13,16 +13,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
   let whitelist = config.get('whitelist'),
+    ipAllowedArray = [],
     clientIp = req.ip;
   console.log('ip ', clientIp);
-  return false;
-  for (let i = 0; i < whitelist.length; i++) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://' + whitelist[i]);
+  if (whitelist.indexOf(clientIp) !== -1) {
+    next();
+  } else {
+    console.log('Non-whitelist IP address attempted access');
+    return false;
   }
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
 });
 
 // ******* ROUTES ****** //
