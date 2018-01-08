@@ -18,5 +18,5 @@
         "tray4": "../../../../tray4/root/media"
     },
     "hcsName": "Geatz",
-    "whitelist": ["192.168.1.23:3000", "geatz:3000"]
+    "whitelist": ["192.168.1.3"]
 }

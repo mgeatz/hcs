@@ -13,8 +13,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
   let whitelist = config.get('whitelist'),
-    ipAllowedArray = [],
-    clientIp = req.ip;
+    clientIpFull = req.ip.split(':'),
+    clientIp = clientIpFull[clientIpFull.length - 1];
+
   console.log('ip ', clientIp);
   if (whitelist.indexOf(clientIp) !== -1) {
     next();
