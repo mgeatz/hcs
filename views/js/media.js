@@ -23,16 +23,18 @@ var getMedia = function (mediaChoice) {
           // show tags
           // /tray1/root/media/Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
-          var splitBTAG = value.split('BTAG_'),
-            tagPre = splitBTAG[0],
-            tagPost = splitBTAG[1],
-            splitTAGE = tagPost.split('_TAGE'),
-            resource = splitTAGE[1],
-            tag = splitTAGE[0];
+          var splitBTAG = value.split('BTAG_');
 
           if (mediaType === '.jpg' || mediaType === '.png') {
 
             if (splitBTAG.length>1) {
+              // find tag
+              var tagPre = splitBTAG[0],
+                tagPost = splitBTAG[1],
+                splitTAGE = tagPost.split('_TAGE'),
+                resource = splitTAGE[1],
+                tag = splitTAGE[0]
+
               $media.append('<button id="' + tag + '">' + tag + '</button>');
             } else {
               if ($('#tag_less').length === 0) {
