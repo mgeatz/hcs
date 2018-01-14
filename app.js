@@ -105,10 +105,8 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
   switch (resourceType) {
 
     case 'photos':
-
       fs.readdir(mediaFolder, (err, files) => {
         files.forEach((file) => {
-
           // Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
           var splitBTAG = file.split('BTAG_'),
             tagPost = splitBTAG[1],
@@ -117,18 +115,24 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
             mediaType = file.toLowerCase().substr(value.length - 4);
 
           if (thisTag === tag) {
-
             if (mediaType === '.jpg' || mediaType === '.png') {
               //console.log('/tray' + routePath + '/root/media/', file);
               mediaArray.push('/tray' + routePath + '/root/media/' + file);
             }
-            
           }
-
         });
-
       });
+      break;
 
+    default:
+      fs.readdir(mediaFolder, (err, files) => {
+        files.forEach((file) => {
+          //console.log('/tray' + routePath + '/root/media/', file);
+          mediaArray.push('/tray' + routePath + '/root/media/' + file);
+        });
+        res.send(JSON.stringify({media: mediaArray}, null, 3));
+        //console.log('mediaArray1 ', mediaArray);
+      });
   }
 
   res.send(JSON.stringify({media: mediaArray}, null, 3));

@@ -30,6 +30,7 @@ var getMedia = function (mediaChoice) {
   mediaFiles.forEach(function (value, index) {
     var $media = $('#media'),
       mediaType = value.toLowerCase().substr(value.length - 4);
+
     if (mediaType.split('')[0] === '.') {
 
       switch (mediaChoice) {
@@ -91,6 +92,7 @@ var getMedia = function (mediaChoice) {
     } else if (mediaType.indexOf('.sh') !== -1) {
       console.log('script found - ', value, ' target for removal.');
     }
+
   });
 
   $('.tag').click(function(event){
