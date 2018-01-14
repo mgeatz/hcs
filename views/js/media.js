@@ -117,7 +117,8 @@ $('#edit_modal').on('show.bs.modal', function (event) {
   var file = event.relatedTarget.id,
     modal = $(this);
 
-  modal.find('.modal-title').text('Modifying ' + file);
+  modal.find('.file_name').text(file);
+  modal.find('.file_img').attr('src', file);
 });
 
 
