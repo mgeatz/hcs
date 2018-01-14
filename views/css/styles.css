@@ -73,3 +73,7 @@ h2 {
     height: 20px !important;
     color: #9ca3a9;
 }
+
+.btn {
+    margin: 5px;
+}
