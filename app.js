@@ -106,7 +106,7 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
 
     switch (resourceType) {
 
-      case 'photos':
+      case 'photo':
         files.forEach((file) => {
           // Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
           var splitBTAG = file.split('BTAG_'),
@@ -131,7 +131,6 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
           //console.log('/tray' + routePath + '/root/media/', file);
           mediaArray.push('/tray' + routePath + '/root/media/' + file);
         });
-
 
     }
 
