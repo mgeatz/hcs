@@ -17,7 +17,6 @@ var fetchResources = function (resourceType, targetId) {
   $.ajax({
     url: '/api/v1/mediaFiles/' + tray + '/' + resourceType + '/' + targetId,
     success: function (res) {
-      console.log('res ', res);
       filesRequested = JSON.parse(res).media;
     },
     failure: function(error) {

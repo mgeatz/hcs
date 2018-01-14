@@ -85,7 +85,13 @@ app.post(api.v1.upload, function (req, res) {
 });
 
 /**
- * @API GET files from tray1
+ * @API
+ * @METHOD GET
+ * @params
+ *  /:routePath - tray identifier - Integer - required
+ *  /:resourceType - media type identifier - String - optional (i.e., '?')
+ *  /:tag - media tag - String - optional (i.e., '?')
+ * @description fetch files from a tray, optionally return files by resource type and tag
  */
 app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', function (req, res) {
   let routePath = req.params.routePath,
@@ -96,14 +102,37 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
 
   console.log('req.params.routePath ', req.params);
 
-  fs.readdir(mediaFolder, (err, files) => {
-    files.forEach((file) => {
-      //console.log('/tray' + routePath + '/root/media/', file);
-      mediaArray.push('/tray' + routePath + '/root/media/' + file);
-    });
-    res.send(JSON.stringify({media: mediaArray}, null, 3));
-    //console.log('mediaArray1 ', mediaArray);
-  });
+  switch (resourceType) {
+
+    case 'photos':
+
+      fs.readdir(mediaFolder, (err, files) => {
+        files.forEach((file) => {
+
+          // Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
+          var splitBTAG = file.split('BTAG_'),
+            tagPost = splitBTAG[1],
+            splitTAGE = tagPost.split('_TAGE'),
+            thisTag = splitTAGE[0],
+            mediaType = file.toLowerCase().substr(value.length - 4);
+
+          if (thisTag === tag) {
+
+            if (mediaType === '.jpg' || mediaType === '.png') {
+              //console.log('/tray' + routePath + '/root/media/', file);
+              mediaArray.push('/tray' + routePath + '/root/media/' + file);
+            }
+            
+          }
+
+        });
+
+      });
+
+  }
+
+  res.send(JSON.stringify({media: mediaArray}, null, 3));
+  //console.log('mediaArray1 ', mediaArray);
 
 });
 
