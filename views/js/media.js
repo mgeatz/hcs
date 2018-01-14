@@ -94,5 +94,5 @@ $('#docs').click(function () {
 $('.tag').click(function(event){
   var targetId = event.target.id;
   console.log('targetId ', targetId);
-}),
+});
 
