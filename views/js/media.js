@@ -10,6 +10,16 @@ if (location.pathname === '/media') {
   });
 }
 
+var fetchResources = function (resourceType, targetId) {
+  $.ajax({
+    url: '/api/v1/mediaFiles/1' + resourceType + '/' + targetId,
+    success: function (res) {
+      console.log('res ', res);
+      mediaFiles = JSON.parse(res).media;
+    }
+  });
+};
+
 var getMedia = function (mediaChoice) {
   $('#media').html('');
   mediaFiles.forEach(function (value, index) {
@@ -36,14 +46,14 @@ var getMedia = function (mediaChoice) {
                 tag = splitTAGE[0];
 
               if (tag.toLowerCase() === 'new') {
-                $media.append('<button class="tag btn btn-warning" id="' + tag + '">' + tag + '</button>');
+                $media.append('<button type="photo" class="tag btn btn-warning" id="' + tag + '">' + tag + '</button>');
               } else {
-                $media.append('<button class="tag btn btn-primary" id="' + tag + '">' + tag + '</button>');
+                $media.append('<button type="photo" class="tag btn btn-primary" id="' + tag + '">' + tag + '</button>');
               }
 
             } else {
               if ($('#tag_less').length === 0) {
-                $media.append('<button class="tag btn btn-danger" id="tag_less">No Tag</button>');
+                $media.append('<button type="photo" class="tag btn btn-danger" id="tag_less">No Tag</button>');
               }
             }
 
@@ -81,6 +91,7 @@ var getMedia = function (mediaChoice) {
   $('.tag').click(function(event){
     var targetId = event.target.id;
     console.log('targetId ', targetId);
+    fetchResources(targetId);
   });
 
 };
