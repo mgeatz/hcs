@@ -87,8 +87,10 @@ app.post(api.v1.upload, function (req, res) {
 /**
  * @API GET files from tray1
  */
-app.get(api.v1.mediaFiles + '/*' + ':routePath/:resourceType/:tag', function (req, res) {
+app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', function (req, res) {
   let routePath = req.params.routePath,
+    resourceType = req.params.resourceType,
+    tag = req.params.tag,
     mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media'),
     mediaArray = [];
 
