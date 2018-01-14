@@ -1,18 +1,21 @@
-var mediaFiles;
+var mediaFiles,
+  filesRequested;
 
 if (location.pathname === '/media') {
   $.ajax({
     url: '/api/v1/mediaFiles/1',
     success: function (res) {
       console.log('res ', res);
-      mediaFiles = JSON.parse(res).media;
+      filesRequested = JSON.parse(res).media;
     }
   });
 }
 
 var fetchResources = function (resourceType, targetId) {
+  var trayPath = location.pathname.split('media')[1],
+    tray = (trayPath === '') ? '1' : trayPath;
   $.ajax({
-    url: '/api/v1/mediaFiles/1' + resourceType + '/' + targetId,
+    url: '/api/v1/mediaFiles/' + tray + '/' + resourceType + '/' + targetId,
     success: function (res) {
       console.log('res ', res);
       mediaFiles = JSON.parse(res).media;
@@ -46,14 +49,14 @@ var getMedia = function (mediaChoice) {
                 tag = splitTAGE[0];
 
               if (tag.toLowerCase() === 'new') {
-                $media.append('<button type="photo" class="tag btn btn-warning" id="' + tag + '">' + tag + '</button>');
+                $media.append('<button resourceType="photo" class="tag btn btn-warning" id="' + tag + '">' + tag + '</button>');
               } else {
-                $media.append('<button type="photo" class="tag btn btn-primary" id="' + tag + '">' + tag + '</button>');
+                $media.append('<button resourceType="photo" class="tag btn btn-primary" id="' + tag + '">' + tag + '</button>');
               }
 
             } else {
               if ($('#tag_less').length === 0) {
-                $media.append('<button type="photo" class="tag btn btn-danger" id="tag_less">No Tag</button>');
+                $media.append('<button resourceType="photo" class="tag btn btn-danger" id="tag_less">No Tag</button>');
               }
             }
 
@@ -89,9 +92,10 @@ var getMedia = function (mediaChoice) {
   });
 
   $('.tag').click(function(event){
-    var targetId = event.target.id;
-    console.log('targetId ', targetId);
-    fetchResources(targetId);
+    var targetId = event.target.id,
+      resourceType = target.attributes[0].value;
+    console.log('targetId ', targetId, ' resourceType ', resourceType);
+    fetchResources(resourceType, targetId);
   });
 
 };
