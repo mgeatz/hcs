@@ -114,7 +114,9 @@ var getMedia = function (mediaChoice) {
 
 
 $('#edit_modal').on('show.bs.modal', function (event) {
-  var file = event.target.id;
+  var file = event.target.id,
+    modal = $(this);
+
   modal.find('.modal-title').text('Modifying ' + file);
 });
 
