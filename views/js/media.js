@@ -26,9 +26,9 @@ var fetchResources = function (resourceType, targetId) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img width="70" src="' + file + '"/><br>' +
-          '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>' +
+          '<a href="' + file + '" target="_blank" data-toggle="modal" data-target=".bs-example-modal-lg">'+
+          'VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>' +
           '</div>');
-
       });
 
     },
@@ -60,10 +60,8 @@ var getMedia = function (mediaChoice) {
 
             if (splitBTAG.length > 1) {
               // find tag
-              var tagPre = splitBTAG[0],
-                tagPost = splitBTAG[1],
+              var tagPost = splitBTAG[1],
                 splitTAGE = tagPost.split('_TAGE'),
-                resource = splitTAGE[1],
                 tag = splitTAGE[0];
 
               if (tag.toLowerCase() === 'new') {

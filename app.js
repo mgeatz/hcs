@@ -91,7 +91,7 @@ app.post(api.v1.upload, function (req, res) {
  *  /:routePath - tray identifier - Integer - required
  *  /:resourceType - media type identifier - String - optional (i.e., '?')
  *  /:tag - media tag - String - optional (i.e., '?')
- * @description fetch files from a tray, optionally return files by resource type and tag
+ * @description fetch files from the specified tray, optionally return files by resource type and tag
  */
 app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', function (req, res) {
   let routePath = req.params.routePath,
@@ -109,7 +109,7 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
       case 'photo':
         files.forEach((file) => {
           let mediaType = file.toLowerCase().substr(file.length - 4);
-          // Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
+          // example file name: Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
           if (tag === 'tag_less') {
 
