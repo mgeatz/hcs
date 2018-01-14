@@ -108,19 +108,36 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
 
       case 'photo':
         files.forEach((file) => {
+          let mediaType = file.toLowerCase().substr(value.length - 4);
           // Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
-          var splitBTAG = file.split('BTAG_'),
-            tagPost = splitBTAG[1],
-            splitTAGE = tagPost.split('_TAGE'),
-            thisTag = splitTAGE[0],
-            mediaType = file.toLowerCase().substr(value.length - 4);
 
-          if (thisTag === tag) {
+          if (tag === 'tag_less') {
+
             if (mediaType === '.jpg' || mediaType === '.png') {
               //console.log('/tray' + routePath + '/root/media/', file);
               mediaArray.push('/tray' + routePath + '/root/media/' + file);
             }
+
+          } else {
+            let splitBTAG = file.split('BTAG_');
+
+            if (splitBTAG !== undefined) {
+              let tagPost = splitBTAG[1],
+                splitTAGE = tagPost.split('_TAGE'),
+                thisTag = splitTAGE[0];
+
+              if (mediaType === '.jpg' || mediaType === '.png') {
+
+                if (thisTag === tag) {
+                  //console.log('/tray' + routePath + '/root/media/', file);
+                  mediaArray.push('/tray' + routePath + '/root/media/' + file);
+                }
+
+              }
+
+            }
           }
+
         });
         break;
 
