@@ -26,9 +26,8 @@ var fetchResources = function (resourceType, targetId) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img width="70" src="' + file + '"/><br>' +
-          '<a href="' + file + '" target="_blank">'+
-          'VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>' +
-          '</div>');
+          '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;'+
+          '<button class="btn btn-default btn-xs" data-toggle="modal" data-target=".edit">EDIT</button></div>');
       });
 
     },
