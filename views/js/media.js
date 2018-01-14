@@ -6,7 +6,7 @@ if (location.pathname === '/media') {
     url: '/api/v1/mediaFiles/1',
     success: function (res) {
       console.log('res ', res);
-      filesRequested = JSON.parse(res).media;
+      mediaFiles = JSON.parse(res).media;
     }
   });
 }
@@ -18,7 +18,7 @@ var fetchResources = function (resourceType, targetId) {
     url: '/api/v1/mediaFiles/' + tray + '/' + resourceType + '/' + targetId,
     success: function (res) {
       console.log('res ', res);
-      mediaFiles = JSON.parse(res).media;
+      filesRequested = JSON.parse(res).media;
     }
   });
 };
