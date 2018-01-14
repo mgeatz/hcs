@@ -89,8 +89,6 @@ app.post(api.v1.upload, function (req, res) {
  */
 app.get(api.v1.mediaFiles + '/:routePath', function (req, res) {
   let routePath = req.params.routePath,
-    resourceType = req.params.resourceType,
-    tag = req.params.tag,
     mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media'),
     mediaArray = [];
 
@@ -102,7 +100,7 @@ app.get(api.v1.mediaFiles + '/:routePath', function (req, res) {
       mediaArray.push('/tray' + routePath + '/root/media/' + file);
     });
     res.send(JSON.stringify({media: mediaArray}, null, 3));
-    console.log('mediaArray1 ', mediaArray);
+    //console.log('mediaArray1 ', mediaArray);
   });
 
 });
