@@ -31,7 +31,7 @@ var getMedia = function (mediaChoice) {
 
           if (mediaType === '.jpg' || mediaType === '.png') {
 
-            if (splitBTAG.length>0) {
+            if (splitBTAG.length>1) {
               $media.append('<button id="' + tag + '">' + tag + '</button>');
             } else {
               if (!$('#tag_less')) {
