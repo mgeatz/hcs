@@ -112,12 +112,10 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
           // example file name: Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
           if (tag === 'tag_less') {
-
             if (mediaType === '.jpg' || mediaType === '.png') {
               //console.log('/tray' + routePath + '/root/media/', file);
               mediaArray.push('/tray' + routePath + '/root/media/' + file);
             }
-
           } else {
             let splitBTAG = file.split('BTAG_');
 
@@ -127,12 +125,10 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
                 thisTag = splitTAGE[0];
 
               if (mediaType === '.jpg' || mediaType === '.png') {
-
                 if (thisTag === tag) {
                   //console.log('/tray' + routePath + '/root/media/', file);
                   mediaArray.push('/tray' + routePath + '/root/media/' + file);
                 }
-
               }
 
             }
@@ -157,6 +153,44 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
   });
 
 });
+
+/**
+ * @API
+ * @METHOD PUT
+ * @parameters
+ *
+ * @description change the name of the file to use the tag the user has entered
+ */
+app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (req, res) {
+  let routePath = req.params.routePath,
+    fileName = req.params.fileName,
+    tag = req.params.tag,
+    mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media');
+
+
+  fs.readdir(mediaFolder, (err, files) => {
+    files.forEach((file) => {
+      if (file === fileName) {
+
+        let splitBTAG = file.split('BTAG_');
+
+        if (splitBTAG.length > 1) {
+          let splitTAGE = file.split('_TAGE');
+          console.log('update existing tag to: ', splitBTAG[0] + tag + splitTAGE[1]);
+          //fs.rename(file, splitBTAG[0] + tag + splitTAGE[1]);
+        } else {
+          let date = new Date(),
+            specialId = date.toString().split(':')[0].split(' ').join('-'),
+            theFile = specialId + '-BTAG_' + tag + '_TAGE-' + file;
+          console.log('create new tag: ', theFile);
+        }
+
+      }
+    });
+  });
+
+});
+
 
 /**
  * @API get version number
