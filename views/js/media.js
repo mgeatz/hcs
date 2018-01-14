@@ -31,6 +31,10 @@ var fetchResources = function (resourceType, targetId) {
           'EDIT</button></div>');
       });
 
+      if (filesRequested.length === 0) {
+        $media.text('No Files Found.');
+      }
+
     },
     failure: function (error) {
       console.log('failed ', error);
