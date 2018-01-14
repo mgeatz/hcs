@@ -140,3 +140,20 @@ $('#docs').click(function () {
   getMedia('docs');
 });
 
+$('#save_edit').click(function() {
+  var tag = $('#tag').val(),
+    file = $('.file_name');/*.split('/'),
+    fileName = file[file.length - 1];*/
+
+  console.log('file ', file);
+
+  $.ajax({
+    url: '/api/v1/mediaFiles/1/' + file + tag,
+    success: function (res) {
+      console.log('success ', res);
+    },
+    failure: function (error) {
+      console.log('error ', error);
+    }
+  });
+});
