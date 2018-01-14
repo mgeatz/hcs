@@ -13,13 +13,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
   let whitelist = config.get('whitelist'),
-    ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    clientIpFull = req.ip.split(':'),
+    clientIp = clientIpFull[clientIpFull.length - 1];
 
-  console.log('ip ', ip);
-  if (whitelist.indexOf(ip) !== -1) {
+  console.log('ip ', clientIp);
+  if (whitelist.indexOf(clientIp) !== -1) {
     next();
   } else {
-    console.log('Non-whitelist IP address attempted access', ip);
+    console.log('Non-whitelist IP address attempted access', clientIp);
     return false;
   }
 });
