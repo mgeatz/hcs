@@ -87,12 +87,15 @@ app.post(api.v1.upload, function (req, res) {
 /**
  * @API Get all files from tray1
  */
-app.get(api.v1.mediaFiles + '/:routePath', function (req, res) {
+app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType' + '/:tag', function (req, res) {
   let routePath = req.params.routePath,
+    resourceType = req.params.resourceType,
+    tag = req.params.tag,
     mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media'),
     mediaArray = [];
 
-  console.log('req.params.routePath ', routePath);
+  console.log('req.params.routePath ', routePath, resourceType, tag);
+
   fs.readdir(mediaFolder, (err, files) => {
     files.forEach((file) => {
       console.log('/tray' + routePath + '/root/media/', file);
