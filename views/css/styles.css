@@ -77,3 +77,11 @@ h2 {
 .btn {
     margin: 5px;
 }
+
+input {
+    width: 250px;
+    line-height: 2;
+    padding: 1px 10px;
+    border: 1.5px solid #eee;
+    border-radius: 3px;
+}
