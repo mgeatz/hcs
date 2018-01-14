@@ -23,19 +23,20 @@ var getMedia = function (mediaChoice) {
           // show tags
           // /tray1/root/media/Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
-          var tagPre = value.split('BTAG_')[0],
-            taggedResource = tagPre.split('_TAGE'),
-            tagPost = taggedResource[1],
-            tag = taggedResource[0];
+          var splitBTAG = value.split('BTAG_'),
+            tagPre = splitBTAG[0],
+            splitTAGE = value.split('_TAGE'),
+            tagPost = splitTAGE[1],
+            tag = splitTAGE[0];
 
           if (mediaType === '.jpg' || mediaType === '.png') {
 
-            if (tag.length>0) {
+            if (splitBTAG.length>0) {
               $media.append('<button id="' + tag + '">' + tag + '</button>');
             } else {
               $media.append('<button id="taggles">No Tag</button>');
             }
-            
+
             /*$media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
               ' display:inline-block; margin: 5px;"><img width="70" src="' + value + '"/><br>' +
               '<a href="' + value + '" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>' +
