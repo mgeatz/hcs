@@ -121,7 +121,6 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
           } else {
             let splitBTAG = file.split('BTAG_');
 
-            console.log('splitBTAG ', splitBTAG);
             if (splitBTAG.length > 1) {
               let tagPost = splitBTAG[1],
                 splitTAGE = tagPost.split('_TAGE'),
@@ -129,7 +128,6 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
 
               if (mediaType === '.jpg' || mediaType === '.png') {
 
-                console.log('thisTag ', thisTag);
                 if (thisTag === tag) {
                   //console.log('/tray' + routePath + '/root/media/', file);
                   mediaArray.push('/tray' + routePath + '/root/media/' + file);

@@ -20,6 +20,8 @@ var fetchResources = function (resourceType, targetId) {
       var filesRequested = JSON.parse(res).media,
         $media = $('#media');
 
+      $media.html('');
+
       filesRequested.forEach(function (file) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
@@ -37,7 +39,9 @@ var fetchResources = function (resourceType, targetId) {
 };
 
 var getMedia = function (mediaChoice) {
+  window.stop();
   $('#media').html('');
+
   mediaFiles.forEach(function (value, index) {
     var $media = $('#media'),
       mediaType = value.toLowerCase().substr(value.length - 4);
