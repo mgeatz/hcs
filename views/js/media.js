@@ -93,7 +93,7 @@ var getMedia = function (mediaChoice) {
 
   $('.tag').click(function(event){
     var targetId = event.target.id,
-      resourceType = target.attributes[0].value;
+      resourceType = event.target.attributes[0].value;
     console.log('targetId ', targetId, ' resourceType ', resourceType);
     fetchResources(resourceType, targetId);
   });
