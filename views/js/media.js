@@ -33,12 +33,17 @@ var getMedia = function (mediaChoice) {
                 tagPost = splitBTAG[1],
                 splitTAGE = tagPost.split('_TAGE'),
                 resource = splitTAGE[1],
-                tag = splitTAGE[0]
+                tag = splitTAGE[0];
 
-              $media.append('<button id="' + tag + '">' + tag + '</button>');
+              if (tag.toLowerCase() === 'new') {
+                $media.append('<button class="btn btn-warning" id="' + tag + '">' + tag + '</button>');
+              } else {
+                $media.append('<button class="btn btn-primary" id="' + tag + '">' + tag + '</button>');
+              }
+
             } else {
               if ($('#tag_less').length === 0) {
-                $media.append('<button id="tag_less">No Tag</button>');
+                $media.append('<button class="btn btn-danger" id="tag_less">No Tag</button>');
               }
             }
 
