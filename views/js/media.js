@@ -7,6 +7,11 @@ if (location.pathname === '/media') {
     success: function (res) {
       console.log('res ', res);
       mediaFiles = JSON.parse(res).media;
+
+      if (mediaFiles.length === 0) {
+        $media.text('No Files Found.');
+      }
+
     }
   });
 }
@@ -30,10 +35,6 @@ var fetchResources = function (resourceType, targetId) {
           '<button class="btn btn-default btn-xs" data-toggle="modal" data-target=".edit" id="' + file + '">' +
           'EDIT</button></div>');
       });
-
-      if (filesRequested.length === 0) {
-        $media.text('No Files Found.');
-      }
 
     },
     failure: function (error) {
