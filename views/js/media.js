@@ -35,7 +35,7 @@ var getMedia = function (mediaChoice) {
               $media.append('<button id="' + tag + '">' + tag + '</button>');
             } else {
               if (!$('#tag_less')) {
-                $media.append('<button id="tag_less'>No Tag</button>');
+                $media.append('<button id="tag_less">No Tag</button>');
               }
             }
 
