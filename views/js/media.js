@@ -17,9 +17,20 @@ var fetchResources = function (resourceType, targetId) {
   $.ajax({
     url: '/api/v1/mediaFiles/' + tray + '/' + resourceType + '/' + targetId,
     success: function (res) {
-      filesRequested = JSON.parse(res).media;
+      var filesRequested = JSON.parse(res).media,
+        $media = $('#media');
+
+      filesRequested.forEach(function (file) {
+
+        $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
+          ' display:inline-block; margin: 5px;"><img width="70" src="' + file + '"/><br>' +
+          '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>' +
+          '</div>');
+
+      });
+
     },
-    failure: function(error) {
+    failure: function (error) {
       console.log('failed ', error);
     }
   });
@@ -43,7 +54,7 @@ var getMedia = function (mediaChoice) {
 
           if (mediaType === '.jpg' || mediaType === '.png') {
 
-            if (splitBTAG.length>1) {
+            if (splitBTAG.length > 1) {
               // find tag
               var tagPre = splitBTAG[0],
                 tagPost = splitBTAG[1],
@@ -62,11 +73,6 @@ var getMedia = function (mediaChoice) {
                 $media.append('<button resourceType="photo" class="tag btn btn-danger" id="tag_less">No Tag</button>');
               }
             }
-
-            /*$media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
-              ' display:inline-block; margin: 5px;"><img width="70" src="' + value + '"/><br>' +
-              '<a href="' + value + '" target="_blank">VIEW</a>&nbsp;&nbsp;<sup><u>EDIT</u></sup>' +
-              '</div>');*/
           }
           break;
         case 'movies':
@@ -95,7 +101,7 @@ var getMedia = function (mediaChoice) {
 
   });
 
-  $('.tag').click(function(event){
+  $('.tag').click(function (event) {
     var targetId = event.target.id,
       resourceType = event.target.attributes[0].value;
     console.log('targetId ', targetId, ' resourceType ', resourceType);
