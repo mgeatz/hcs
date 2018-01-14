@@ -34,7 +34,9 @@ var getMedia = function (mediaChoice) {
             if (splitBTAG.length>0) {
               $media.append('<button id="' + tag + '">' + tag + '</button>');
             } else {
-              $media.append('<button id="taggles">No Tag</button>');
+              if (!$('#tag_less')) {
+                $media.append('<button id="tag_less'>No Tag</button>');
+              }
             }
 
             /*$media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
