@@ -39,8 +39,10 @@ var fetchResources = function (resourceType, targetId) {
 };
 
 var getMedia = function (mediaChoice) {
+  var $media = $('#media');
+
   window.stop();
-  $('#media').html('');
+  $media.html('');
 
   if (mediaFiles === undefined) {
     $media.text('No Files Found.');
