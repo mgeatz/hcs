@@ -122,7 +122,7 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
             let splitBTAG = file.split('BTAG_');
 
             console.log('splitBTAG ', splitBTAG);
-            if (splitBTAG !== undefined) {
+            if (splitBTAG.length > 1) {
               let tagPost = splitBTAG[1],
                 splitTAGE = tagPost.split('_TAGE'),
                 thisTag = splitTAGE[0];
