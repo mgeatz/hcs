@@ -108,7 +108,7 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
 
       case 'photo':
         files.forEach((file) => {
-          let mediaType = file.toLowerCase().substr(value.length - 4);
+          let mediaType = file.toLowerCase().substr(file.length - 4);
           // Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
           if (tag === 'tag_less') {
