@@ -19,6 +19,9 @@ var fetchResources = function (resourceType, targetId) {
     success: function (res) {
       console.log('res ', res);
       filesRequested = JSON.parse(res).media;
+    },
+    failure: function(error) {
+      console.log('failed ', error);
     }
   });
 };
