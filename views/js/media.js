@@ -77,6 +77,12 @@ var getMedia = function (mediaChoice) {
       console.log('script found - ', value, ' target for removal.');
     }
   });
+
+  $('.tag').click(function(event){
+    var targetId = event.target.id;
+    console.log('targetId ', targetId);
+  });
+
 };
 
 $('#photos').click(function () {
@@ -89,10 +95,5 @@ $('#videos').click(function () {
 
 $('#docs').click(function () {
   getMedia('docs');
-});
-
-$('.tag').click(function(event){
-  var targetId = event.target.id;
-  console.log('targetId ', targetId);
 });
 
