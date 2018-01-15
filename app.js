@@ -175,19 +175,26 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
         let splitBTAG = file.split('BTAG_');
 
         if (splitBTAG.length > 1) {
+
           let splitTAGE = file.split('_TAGE');
-          console.log('update existing tag to: ', splitBTAG[0] + tag + splitTAGE[1]);
+          console.log('update existing tag to: ', mediaFolder + '/' + splitBTAG[0] + tag + splitTAGE[1]);
           //fs.rename(file, splitBTAG[0] + tag + splitTAGE[1]);
+
         } else {
+
           let date = new Date(),
             specialId = date.toString().split(':')[0].split(' ').join('-'),
-            theFile = specialId + '-BTAG_' + tag + '_TAGE-' + file;
+            theFile = mediaFolder + '/' + specialId + '-BTAG_' + tag + '_TAGE-' + file;
+
           console.log('create new tag: ', theFile);
+
         }
 
       }
     });
   });
+
+  res.send(JSON.stringify({success: true}, null, 3));
 
 });
 
