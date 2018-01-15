@@ -27,8 +27,8 @@ var fetchResources = function (resourceType, targetId) {
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img width="70" src="' + file + '"/><br>' +
           '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;'+
-          '<button class="btn btn-default btn-xs" data-toggle="modal" data-target=".edit" id="' + file + '">' +
-          'EDIT</button></div>');
+          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
+          ' id="' + file + '">EDIT</button></div>');
       });
 
       // edit listener
@@ -91,9 +91,9 @@ var getMedia = function (mediaChoice) {
                   tag = splitTAGE[0];
 
                 if (tag.toLowerCase() === 'new') {
-                  $media.append('<button resourceType="photo" class="tag btn btn-warning" id="' + tag + '">' + tag + '</button>');
-                } else {
-                  $media.append('<button resourceType="photo" class="tag btn btn-primary" id="' + tag + '">' + tag + '</button>');
+                  $media.append('<button resourceType="photo" class="' + tag + ' tag btn btn-warning" id="' + tag + '">' + tag + '</button>');
+                } else if ($('.' + tag + '').length < 1) {
+                  $media.append('<button resourceType="photo" class="' + tag + ' tag btn btn-primary" id="' + tag + '">' + tag + '</button>');
                 }
 
               } else {
