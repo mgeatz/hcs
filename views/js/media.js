@@ -23,7 +23,6 @@ if (locPath.indexOf('media') !== -1) {
   $.ajax({
     url: '/api/v1/mediaFiles/' + trayTarget,
     success: function (res) {
-      console.log('res ', res);
       mediaFiles = JSON.parse(res).media;
     }
   });
@@ -55,13 +54,11 @@ var fetchResources = function (resourceType, targetId) {
           file = $('.file_name').text().split('/'),
           fileName = file[file.length - 1];
 
-        console.log('fileName ', fileName, ' tag ', tag);
-
         $.ajax({
           url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName + '/' + tag,
           type: 'PUT',
           success: function (res) {
-            console.log('success ', res);
+            console.log('UPDATE success ', res);
             location.reload();
           },
           failure: function (error) {
@@ -75,13 +72,11 @@ var fetchResources = function (resourceType, targetId) {
         var file = $('.file_name').text().split('/'),
           fileName = file[file.length - 1];
 
-        console.log('fileName ', fileName);
-
         $.ajax({
           url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName,
           type: 'DELETE',
           success: function (res) {
-            console.log('success ', res);
+            console.log('DELETE success ', res);
             location.reload();
           },
           failure: function (error) {
