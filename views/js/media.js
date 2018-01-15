@@ -1,14 +1,31 @@
 var mediaFiles,
-  filesRequested;
+  filesRequested,
+  locPath = location.pathname,
+  trayTarget = null;
 
-if (location.pathname === '/media') {
+if (.indexOf('media') !== -1) {
   $.ajax({
-    url: '/api/v1/mediaFiles/1',
+    url: '/api/v1/mediaFiles/' + trayTarget,
     success: function (res) {
       console.log('res ', res);
       mediaFiles = JSON.parse(res).media;
     }
   });
+}
+
+switch (locPath) {
+  case 'media':
+    trayTarget = '1';
+    break;
+  case 'media2':
+    trayTarget = '2';
+    break;
+  case 'media3':
+    trayTarget = '3';
+    break;
+  case 'media4':
+    trayTarget = '4';
+    break;
 }
 
 var fetchResources = function (resourceType, targetId) {
@@ -40,7 +57,7 @@ var fetchResources = function (resourceType, targetId) {
         console.log('fileName ', fileName, ' tag ', tag);
 
         $.ajax({
-          url: '/api/v1/mediaFiles/1/' + fileName + '/' + tag,
+          url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName + '/' + tag,
           type: 'PUT',
           success: function (res) {
             console.log('success ', res);
@@ -60,7 +77,7 @@ var fetchResources = function (resourceType, targetId) {
         console.log('fileName ', fileName);
 
         $.ajax({
-          url: '/api/v1/mediaFiles/1/' + fileName,
+          url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName,
           type: 'DELETE',
           success: function (res) {
             console.log('success ', res);
