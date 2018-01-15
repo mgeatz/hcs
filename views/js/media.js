@@ -37,10 +37,10 @@ var fetchResources = function (resourceType, targetId) {
           file = $('.file_name').text().split('/'),
           fileName = file[file.length - 1];
 
-        console.log('file ', file, ' tag ', tag);
+        console.log('fileName ', fileName, ' tag ', tag);
 
         $.ajax({
-          url: '/api/v1/mediaFiles/1/' + file + '/' + tag,
+          url: '/api/v1/mediaFiles/1/' + fileName + '/' + tag,
           success: function (res) {
             console.log('success ', res);
           },
