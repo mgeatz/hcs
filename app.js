@@ -167,6 +167,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
     tag = req.params.tag,
     mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media');
 
+  let tray1 = config.get('diskLocations.tray1'),
+    uploadDir = path.join(__dirname, tray1);
 
   fs.readdir(mediaFolder, (err, files) => {
     files.forEach((file) => {
@@ -176,8 +178,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
 
         if (splitBTAG.length > 1) {
           let splitTAGE = file.split('_TAGE'),
-            oldName = 'public/tray' + routePath + '/root/media' + '/' + file,
-            newName = 'public/tray' + routePath + '/root/media' + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
+            oldName = uploadDir + '/' + file,
+            newName = uploadDir + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
 
           console.log('dirname', __dirname, ' path ', path);
           console.log('rename this file ', oldName);
