@@ -179,6 +179,7 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
             oldName = '/public/tray' + routePath + '/root/media' + '/' + file,
             newName = '/public/tray' + routePath + '/root/media' + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
 
+          console.log('dirname', __dirname, ' path ', path);
           console.log('rename this file ', oldName);
           console.log('update existing tag to: ', newName);
 
