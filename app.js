@@ -168,9 +168,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
   let routePath = req.params.routePath,
     fileName = req.params.fileName,
     tag = req.params.tag,
-    mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media');
-
-  let trayTarget = 'diskLocations.tray' + routePath,
+    mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media'),
+    trayTarget = 'diskLocations.tray' + routePath,
     tray = config.get(trayTarget);
 
   fs.readdir(mediaFolder, (err, files) => {
@@ -214,6 +213,24 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
 
 });
 
+/**
+ * @API
+ * @METHOD Delete
+ * @parameters
+ *
+ * @description
+ */
+app.delete(api.v1.mediaFiles + '/:routePath' + '/:fileName', function (req, res) {
+  let routePath = req.params.routePath,
+    fileName = req.params.fileName,
+    trayTarget = 'diskLocations.tray' + routePath,
+    tray = config.get(trayTarget);
+
+  fs.unlink(tray + '/' + fileName, (err) => {
+    if (err) throw err;
+    res.send(JSON.stringify({success: true}, null, 3));
+  });
+});
 
 /**
  * @API get version number
