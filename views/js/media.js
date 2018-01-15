@@ -44,6 +44,7 @@ var fetchResources = function (resourceType, targetId) {
           type: 'PUT',
           success: function (res) {
             console.log('success ', res);
+            location.reload();
           },
           failure: function (error) {
             console.log('error ', error);
@@ -142,6 +143,8 @@ var getMedia = function (mediaChoice) {
 $('#edit_modal').on('show.bs.modal', function (event) {
   var file = event.relatedTarget.id,
     modal = $(this);
+
+  window.stop();
 
   modal.find('.file_name').text(file);
   modal.find('.file_img').attr('src', file);
