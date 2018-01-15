@@ -32,7 +32,7 @@ var fetchResources = function (resourceType, targetId) {
       });
 
       // edit listener
-      $('#save_edit').click(function() {
+      $('#save_tag').click(function() {
         var tag = $('#tag').val(),
           file = $('.file_name');/*.split('/'),
           fileName = file[file.length - 1];*/
