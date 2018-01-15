@@ -231,7 +231,10 @@ app.delete(api.v1.mediaFiles + '/:routePath' + '/:fileName', function (req, res)
 
   fs.unlink(tray + '/' + fileName, (err) => {
     if (err) throw err;
-    res.send(JSON.stringify({success: true}, null, 3));
+
+    console.log('Delete: ', fileName);
+
+    res.send(JSON.stringify({success: fileName}, null, 3));
   });
 });
 
