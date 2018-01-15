@@ -3,7 +3,23 @@ var mediaFiles,
   locPath = location.pathname,
   trayTarget = null;
 
-if (.indexOf('media') !== -1) {
+if (locPath.indexOf('media') !== -1) {
+
+  switch (locPath) {
+    case 'media':
+      trayTarget = '1';
+      break;
+    case 'media2':
+      trayTarget = '2';
+      break;
+    case 'media3':
+      trayTarget = '3';
+      break;
+    case 'media4':
+      trayTarget = '4';
+      break;
+  }
+
   $.ajax({
     url: '/api/v1/mediaFiles/' + trayTarget,
     success: function (res) {
@@ -11,21 +27,6 @@ if (.indexOf('media') !== -1) {
       mediaFiles = JSON.parse(res).media;
     }
   });
-}
-
-switch (locPath) {
-  case 'media':
-    trayTarget = '1';
-    break;
-  case 'media2':
-    trayTarget = '2';
-    break;
-  case 'media3':
-    trayTarget = '3';
-    break;
-  case 'media4':
-    trayTarget = '4';
-    break;
 }
 
 var fetchResources = function (resourceType, targetId) {
