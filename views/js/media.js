@@ -109,7 +109,6 @@ var getMedia = function (mediaChoice) {
 
         switch (mediaChoice) {
           case 'photos':
-            console.log('photos case');
             // show tags
             // /tray1/root/media/Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
