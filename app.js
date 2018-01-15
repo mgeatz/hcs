@@ -175,16 +175,18 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
         let splitBTAG = file.split('BTAG_');
 
         if (splitBTAG.length > 1) {
-
           let splitTAGE = file.split('_TAGE'),
             oldName = mediaFolder + '/' + file,
             newName = mediaFolder + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
+
           console.log('rename this file ', oldName);
           console.log('update existing tag to: ', newName);
-          fs.rename(oldName, newName);
+
+          fs.rename(oldName, newName, function(err) {
+            if ( err ) console.log('ERROR: ' + err);
+          });
 
         } else {
-
           let date = new Date(),
             specialId = date.toString().split(':')[0].split(' ').join('-'),
             theFile = mediaFolder + '/' + specialId + '-BTAG_' + tag + '_TAGE-' + file;
