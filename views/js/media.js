@@ -31,7 +31,7 @@ var fetchResources = function (resourceType, targetId) {
           ' id="' + file + '">EDIT</button></div>');
       });
 
-      // edit listener
+      // edit
       $('#save_tag').click(function() {
         var tag = $('#tag').val(),
           file = $('.file_name').text().split('/'),
@@ -42,6 +42,26 @@ var fetchResources = function (resourceType, targetId) {
         $.ajax({
           url: '/api/v1/mediaFiles/1/' + fileName + '/' + tag,
           type: 'PUT',
+          success: function (res) {
+            console.log('success ', res);
+            location.reload();
+          },
+          failure: function (error) {
+            console.log('error ', error);
+          }
+        });
+      });
+
+      // delete
+      $('#delete_image').click(function() {
+        var file = $('.file_name').text().split('/'),
+          fileName = file[file.length - 1];
+
+        console.log('fileName ', fileName);
+
+        $.ajax({
+          url: '/api/v1/mediaFiles/1/' + fileName,
+          type: 'DELETE',
           success: function (res) {
             console.log('success ', res);
             location.reload();
