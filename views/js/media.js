@@ -145,7 +145,7 @@ $('#save_edit').click(function() {
     file = $('.file_name');/*.split('/'),
     fileName = file[file.length - 1];*/
 
-  console.log('file ', file);
+  console.log('file ', file, ' tag ', tag);
 
   $.ajax({
     url: '/api/v1/mediaFiles/1/' + file + tag,
