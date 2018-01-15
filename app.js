@@ -186,8 +186,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
             oldName = tray + '/' + file,
             newName = tray + '/' + splitBTAG[0] + 'BTAG_' + tag + '_TAGE' + splitTAGE[1];
 
-          console.log('rename this file ', oldName);
-          console.log('update existing tag to: ', newName);
+          console.log('UPDATE: rename this file ', oldName);
+          console.log('UPDATE: update existing tag to: ', newName);
 
           fs.rename(oldName, newName, function(err) {
             if ( err ) console.log('ERROR: ' + err);
@@ -200,8 +200,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
             oldName = tray + '/' + file,
             newName = tray + '/' + specialId + '-BTAG_' + tag + '_TAGE-' + file;
 
-          console.log('rename this file ', oldName);
-          console.log('create new tag: ', newName);
+          console.log('UPDATE: rename this file ', oldName);
+          console.log('UPDATE: create new tag: ', newName);
 
           fs.rename(oldName, newName, function(err) {
             if ( err ) console.log('ERROR: ' + err);
@@ -232,7 +232,7 @@ app.delete(api.v1.mediaFiles + '/:routePath' + '/:fileName', function (req, res)
   fs.unlink(tray + '/' + fileName, (err) => {
     if (err) throw err;
 
-    console.log('Delete: ', fileName);
+    console.log('DELETE: ', fileName);
 
     res.send(JSON.stringify({success: fileName}, null, 3));
   });
