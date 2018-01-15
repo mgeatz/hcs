@@ -178,10 +178,9 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
 
         if (splitBTAG.length > 1) {
           let splitTAGE = file.split('_TAGE'),
-            oldName = '../../../..' + uploadDir + '/' + file,
-            newName = '../../../..' + uploadDir + '/' + splitBTAG[0] + 'BTAG_' + tag + '_TAGE' + splitTAGE[1];
+            oldName = tray1 + '/' + file,
+            newName = tray1 + '/' + splitBTAG[0] + 'BTAG_' + tag + '_TAGE' + splitTAGE[1];
 
-          console.log('dirname', __dirname, ' path ', path);
           console.log('rename this file ', oldName);
           console.log('update existing tag to: ', newName);
 
@@ -192,9 +191,16 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
         } else {
           let date = new Date(),
             specialId = date.toString().split(':')[0].split(' ').join('-'),
-            theFile = mediaFolder + '/' + specialId + '-BTAG_' + tag + '_TAGE-' + file;
+            theFile = mediaFolder + '/' + specialId + '-BTAG_' + tag + '_TAGE-' + file,
+            oldName = tray1 + '/' + file,
+            newName = tray1 + '/' + specialId + '-BTAG_' + tag + '_TAGE-' + file;
 
-          console.log('create new tag: ', theFile);
+          console.log('rename this file ', oldName);
+          console.log('create new tag: ', newName);
+
+          fs.rename(oldName, newName, function(err) {
+            if ( err ) console.log('ERROR: ' + err);
+          });
 
         }
 
