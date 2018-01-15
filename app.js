@@ -165,9 +165,6 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
   let routePath = req.params.routePath,
     fileName = req.params.fileName,
     tag = req.params.tag,
-    targetTray = 'diskLocations.tray' + routePath,
-    tray = config.get(targetTray),
-    uploadDir = path.join(__dirname, tray),
     mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media');
 
 
@@ -180,8 +177,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
         if (splitBTAG.length > 1) {
 
           let splitTAGE = file.split('_TAGE'),
-            oldName = uploadDir + '/' + file,
-            newName = uploadDir + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
+            oldName = mediaFolder + '/' + file,
+            newName = mediaFolder + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
           console.log('rename this file ', oldName);
           console.log('update existing tag to: ', newName);
           fs.rename(oldName, newName);
