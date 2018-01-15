@@ -6,16 +6,16 @@ var mediaFiles,
 if (locPath.indexOf('media') !== -1) {
 
   switch (locPath) {
-    case 'media':
+    case '/media':
       trayTarget = '1';
       break;
-    case 'media2':
+    case '/media2':
       trayTarget = '2';
       break;
-    case 'media3':
+    case '/media3':
       trayTarget = '3';
       break;
-    case 'media4':
+    case '/media4':
       trayTarget = '4';
       break;
   }
