@@ -178,8 +178,8 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
 
         if (splitBTAG.length > 1) {
           let splitTAGE = file.split('_TAGE'),
-            oldName = '../../../../' + uploadDir + '/' + file,
-            newName = '../../../../' + uploadDir + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
+            oldName = '../../../..' + uploadDir + '/' + file,
+            newName = '../../../..' + uploadDir + '/' + splitBTAG[0] + '/BTAG_' + tag + '_TAGE' + splitTAGE[1];
 
           console.log('dirname', __dirname, ' path ', path);
           console.log('rename this file ', oldName);
