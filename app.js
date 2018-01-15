@@ -170,7 +170,7 @@ app.put(api.v1.mediaFiles + '/:routePath' + '/:fileName' + '/:tag', function (re
     tag = req.params.tag,
     mediaFolder = path.join(__dirname, '/public/tray' + routePath + '/root/media');
 
-  let trayTarget = 'diskLocations.tray1' + routePath,
+  let trayTarget = 'diskLocations.tray' + routePath,
     tray = config.get(trayTarget);
 
   fs.readdir(mediaFolder, (err, files) => {
