@@ -41,6 +41,7 @@ var fetchResources = function (resourceType, targetId) {
 
         $.ajax({
           url: '/api/v1/mediaFiles/1/' + fileName + '/' + tag,
+          type: 'PUT',
           success: function (res) {
             console.log('success ', res);
           },
