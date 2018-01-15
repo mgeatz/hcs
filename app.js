@@ -139,11 +139,14 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
 
       default:
         console.log('default case');
-
-        files.forEach((file) => {
-          //console.log('/tray' + routePath + '/root/media/', file);
-          mediaArray.push('/tray' + routePath + '/root/media/' + file);
-        });
+        try {
+          files.forEach((file) => {
+            //console.log('/tray' + routePath + '/root/media/', file);
+            mediaArray.push('/tray' + routePath + '/root/media/' + file);
+          });
+        } catch (e) {
+          console.log('No Files Found.')
+        }
 
     }
 
