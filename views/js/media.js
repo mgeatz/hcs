@@ -46,7 +46,7 @@ var fetchResources = function (resourceType, targetId) {
           '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;' +
           '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sup>Select bulk edit: </sup><input type="checkbox" class="bulk_edit" '+
-          'fileName="' + file + '"</div>');
+          'fileName="' + file + '"/></div>');
       });
 
       $media.prepend('<button class="btn btn-warning" id="bulk_edit_btn" data-toggle="modal" ' +
