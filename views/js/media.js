@@ -45,7 +45,7 @@ var fetchResources = function (resourceType, targetId) {
           ' display:inline-block; margin: 5px;"><img width="70" src="' + file + '"/><br>' +
           '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;' +
           '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
-          ' id="' + file + '">EDIT</button>&nbsp;&nbsp;<input type="checkbox" class="bulk_edit" '+
+          ' id="' + file + '">EDIT</button><br><sup>Select bulk edit: </sup><input type="checkbox" class="bulk_edit" '+
           'fileName="' + file + '"</div>');
       });
 
