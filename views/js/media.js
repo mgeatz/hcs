@@ -43,32 +43,41 @@ var fetchResources = function (resourceType, targetId) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img width="70" src="' + file + '"/><br>' +
-          '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;'+
+          '<a href="' + file + '" target="_blank">VIEW</a>&nbsp;&nbsp;' +
           '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
-          ' id="' + file + '">EDIT</button></div>');
+          ' id="' + file + '">EDIT</button>&nbsp;&nbsp;<input type="checkbox" class="bulk_edit" '+
+          'fileName="' + file + '"</div>');
       });
 
+      $media.prepend('<button class="btn btn-warning" id="bulk_edit_btn" data-toggle="modal" ' +
+        'data-target=".edit">Bulk Edit</button><br><br>');
+
       // edit
-      $('#save_tag').click(function() {
+      $('#save_tag').click(function () {
         var tag = $('#tag').val(),
           file = $('.file_name').text().split('/'),
-          fileName = file[file.length - 1];
+          fileName = file[file.length - 1],
+          whiteSpaceExp = /^\s+$/g;
 
-        $.ajax({
-          url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName + '/' + tag,
-          type: 'PUT',
-          success: function (res) {
-            console.log('UPDATE success ', res);
-            location.reload();
-          },
-          failure: function (error) {
-            console.log('error ', error);
-          }
-        });
+        if (/\s/g.test(tag)) {
+          alert('::: ERROR ::: You cannot have spaces in a tag name!');
+        } else {
+          $.ajax({
+            url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName + '/' + tag,
+            type: 'PUT',
+            success: function (res) {
+              console.log('UPDATE success ', res);
+              location.reload();
+            },
+            failure: function (error) {
+              console.log('error ', error);
+            }
+          });
+        }
       });
 
       // delete
-      $('#delete_image').click(function() {
+      $('#delete_image').click(function () {
         var file = $('.file_name').text().split('/'),
           fileName = file[file.length - 1];
 
