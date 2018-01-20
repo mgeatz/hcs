@@ -50,7 +50,7 @@ var fetchResources = function (resourceType, targetId) {
       });
 
       $media.prepend('<button class="btn btn-warning" id="bulk_edit_btn" data-toggle="modal" ' +
-        'data-target=".edit">Bulk Edit</button><br><br>');
+        'data-target=".bulk_edit">Bulk Edit</button><br><br>');
 
       // edit
       $('#save_tag').click(function () {
