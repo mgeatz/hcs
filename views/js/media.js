@@ -249,7 +249,7 @@ $('#edit_modal').on('show.bs.modal', function (event) {
 $('#bulk_edit_modal').on('show.bs.modal', function (event) {
   var modal = $(this);
 
-  modal.find('.bulk_file_name').html();
+  modal.find('.bulk_file_name').html('');
 
   for(var i=0; i < $('.bulk_in').length; i++) {
     var thisBox = $('.bulk_in')[i];
