@@ -197,7 +197,9 @@ $('#bulk_edit_modal').on('show.bs.modal', function (event) {
   for(var i=0; i < $('.bulk_in').length; i++) {
     var thisBox = $('.bulk_in')[i];
     if (thisBox.checked) {
-      modal.find('.bulk_file_name').append($($('.bulk_in')[i]).attr('filename') + ',<br>');
+      var file = $($('.bulk_in')[i]).attr('filename');
+      window.bulkEditArray.push(file);
+      modal.find('.bulk_file_name').append(file + ',<br>');
     }
   }
 
