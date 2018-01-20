@@ -98,7 +98,7 @@ var fetchResources = function (resourceType, targetId) {
 
       // BULK :: edit
       $('#bulk_save_tag').click(function () {
-        var tag = $('#tag').val(),
+        var tag = $('#bulk_tag').val(),
           whiteSpaceExp = /^\s+$/g;
 
         if (/\s/g.test(tag)) {
