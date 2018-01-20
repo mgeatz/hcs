@@ -191,6 +191,22 @@ $('#edit_modal').on('show.bs.modal', function (event) {
   modal.find('.file_img').attr('src', file);
 });
 
+$('#bulk_edit_modal').on('show.bs.modal', function (event) {
+  var file = event.relatedTarget.id,
+    modal = $(this);
+
+  for(var i=0; i < $('.bulk_edit').length; i++) {
+    if ($('.bulk_edit')[i].checked) {
+      modal.find('.bulk_file_name').append($($('.bulk_edit')[i]).attr('filename') + ',');
+    }
+  }
+
+  window.stop();
+  //
+  // modal.find('.bulk_file_name').text(file);
+  // modal.find('.bulk_file_img').attr('src', file);
+});
+
 
 $('#photos').click(function () {
   getMedia('photos');
