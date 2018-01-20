@@ -194,10 +194,10 @@ $('#edit_modal').on('show.bs.modal', function (event) {
 $('#bulk_edit_modal').on('show.bs.modal', function (event) {
   var modal = $(this);
 
-  for(var i=0; i < $('.bulk_edit').length; i++) {
-    var thisBox = $('.bulk_edit')[i];
+  for(var i=0; i < $('.bulk_in').length; i++) {
+    var thisBox = $('.bulk_in')[i];
     if (thisBox.checked) {
-      modal.find('.bulk_file_name').append($($('.bulk_edit')[i]).attr('filename') + ',');
+      modal.find('.bulk_file_name').append($($('.bulk_in')[i]).attr('filename') + ',');
     }
   }
 
