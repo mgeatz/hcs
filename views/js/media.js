@@ -106,7 +106,8 @@ var fetchResources = function (resourceType, targetId) {
         } else {
 
           for(var j=0; j < bulkEditArray.length; j++) {
-            var fileName = bulkEditArray[j];
+            var file = bulkEditArray[j].split('/'),
+              fileName = file[file.length - 1];
 
             $.ajax({
               url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName + '/' + tag,
@@ -128,9 +129,11 @@ var fetchResources = function (resourceType, targetId) {
       $('#bulk_delete_image').click(function () {
 
         for(var j=0; j < bulkEditArray.length; j++) {
-          var fileName = bulkEditArray[j];
+          var file = bulkEditArray[j].split('/'),
+            fileName = file[file.length - 1];
+
           $.ajax({
-            url: '/api/v1/mediaFiles/' + trayTarget + fileName,
+            url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName,
             type: 'DELETE',
             success: function (res) {
               console.log('DELETE success ', res);
