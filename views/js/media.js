@@ -144,6 +144,11 @@ var fetchResources = function (resourceType, targetId) {
 
       });
 
+      // BULK :: close
+      $('#bulk_close').click(function() {
+        bulkEditArray = [];
+      });
+
     },
     failure: function (error) {
       console.log('failed ', error);
