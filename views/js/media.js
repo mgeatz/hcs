@@ -97,7 +97,7 @@ var fetchResources = function (resourceType, targetId) {
 
 
       // BULK :: edit
-      $('#save_tag').click(function () {
+      $('#bulk_save_tag').click(function () {
         var tag = $('#tag').val(),
           whiteSpaceExp = /^\s+$/g;
 
@@ -125,7 +125,7 @@ var fetchResources = function (resourceType, targetId) {
       });
 
       // BULK :: delete
-      $('#delete_image').click(function () {
+      $('#bulk_delete_image').click(function () {
 
         for(var j=0; j < bulkEditArray.length; j++) {
           var fileName = bulkEditArray[j];
