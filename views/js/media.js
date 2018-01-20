@@ -130,7 +130,7 @@ var fetchResources = function (resourceType, targetId) {
         for(var j=0; j < bulkEditArray.length; j++) {
           var fileName = bulkEditArray[j];
           $.ajax({
-            url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName,
+            url: '/api/v1/mediaFiles' + trayTarget + '/' + fileName,
             type: 'DELETE',
             success: function (res) {
               console.log('DELETE success ', res);
