@@ -1,7 +1,8 @@
 var mediaFiles,
   filesRequested,
   locPath = location.pathname,
-  trayTarget = null;
+  trayTarget = null,
+  bulkEditArray = [];
 
 if (locPath.indexOf('media') !== -1) {
 
@@ -52,7 +53,7 @@ var fetchResources = function (resourceType, targetId) {
       $media.prepend('<button class="btn btn-warning" id="bulk_edit_btn" data-toggle="modal" ' +
         'data-target=".bulk_edit">Bulk Edit</button><br><br>');
 
-      // edit
+      // SINGLE :: edit
       $('#save_tag').click(function () {
         var tag = $('#tag').val(),
           file = $('.file_name').text().split('/'),
@@ -76,7 +77,7 @@ var fetchResources = function (resourceType, targetId) {
         }
       });
 
-      // delete
+      // SINGLE :: delete
       $('#delete_image').click(function () {
         var file = $('.file_name').text().split('/'),
           fileName = file[file.length - 1];
@@ -92,6 +93,55 @@ var fetchResources = function (resourceType, targetId) {
             console.log('error ', error);
           }
         });
+      });
+
+
+      // BULK :: edit
+      $('#save_tag').click(function () {
+        var tag = $('#tag').val(),
+          whiteSpaceExp = /^\s+$/g;
+
+        if (/\s/g.test(tag)) {
+          alert('::: ERROR ::: You cannot have spaces in a tag name!');
+        } else {
+
+          for(var j=0; j < bulkEditArray.length; j++) {
+            var fileName = bulkEditArray[j];
+
+            $.ajax({
+              url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName + '/' + tag,
+              type: 'PUT',
+              success: function (res) {
+                console.log('UPDATE success ', res);
+                location.reload();
+              },
+              failure: function (error) {
+                console.log('error ', error);
+              }
+            });
+          }
+
+        }
+      });
+
+      // BULK :: delete
+      $('#delete_image').click(function () {
+
+        for(var j=0; j < bulkEditArray.length; j++) {
+          var fileName = bulkEditArray[j];
+          $.ajax({
+            url: '/api/v1/mediaFiles/' + trayTarget + '/' + fileName,
+            type: 'DELETE',
+            success: function (res) {
+              console.log('DELETE success ', res);
+              location.reload();
+            },
+            failure: function (error) {
+              console.log('error ', error);
+            }
+          });
+        }
+
       });
 
     },
@@ -198,7 +248,7 @@ $('#bulk_edit_modal').on('show.bs.modal', function (event) {
     var thisBox = $('.bulk_in')[i];
     if (thisBox.checked) {
       var file = $($('.bulk_in')[i]).attr('filename');
-      window.bulkEditArray.push(file);
+      bulkEditArray.push(file);
       modal.find('.bulk_file_name').append(file + ',<br>');
     }
   }
