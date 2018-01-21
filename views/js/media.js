@@ -43,7 +43,7 @@ var fetchResources = function (resourceType, targetId) {
       filesRequested.forEach(function (file, i) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
-          ' display:inline-block; margin: 5px;"><img id="'+i+'" height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
+          ' display:inline-block; margin: 5px;"><img id="a'+i+'" height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
           '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="' + file + '" name="'+i+'">OPEN</button>' +
           '&nbsp;&nbsp;<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sub>Select bulk edit: </sub><input type="checkbox" class="bulk_in" '+
@@ -301,7 +301,7 @@ $('#docs').click(function () {
 $('#prev_img').click(function (event) {
   var currentImageNum = event.target.name,
     prevImgNum = parseInt(currentImageNum) - 1,
-      prevImgSrc = $('#' + prevImgNum.toString() + '')[0].currentSrc;
+      prevImgSrc = $('#a' + prevImgNum.toString() + '')[0].currentSrc;
 
     $('#previewer_modal').find('.file_name').text(prevImgSrc);
     $('#previewer_modal').find('#img_num').text(prevImgNum);
@@ -317,7 +317,7 @@ $('#prev_img').click(function (event) {
 $('#next_img').click(function (event) {
   var currentImageNum = event.target.name,
     nextImgNum = parseInt(currentImageNum) + 1,
-    nextImgSrc = $('#' + nextImgNum.toString() + '')[0].currentSrc;
+    nextImgSrc = $('#a' + nextImgNum.toString() + '')[0].currentSrc;
 
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
   $('#previewer_modal').find('#img_num').text(nextImgNum);
@@ -327,5 +327,5 @@ $('#next_img').click(function (event) {
 
   $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
   $('#previewer_modal').find('#current_image_preview_link').attr('href', nextImgSrc);
-  
+
 });
