@@ -278,6 +278,9 @@ $('#previewer_modal').on('show.bs.modal', function (event) {
 
   modal.find('.file_name').text(file);
   modal.find('#img_num').text(num);
+  modal.find('#prev_img').attr('name', num);
+  modal.find('#next_img').attr('name', num);
+
   modal.find('#current_image_preview_img').attr('src', file);
   modal.find('#current_image_preview_link').attr('href', file);
 });
@@ -296,7 +299,7 @@ $('#docs').click(function () {
 });
 
 $('#prev_img').click(function (event) {
-  var currentImageNum = $('#img_num').id,
+  var currentImageNum = event.name,
     prevImgNum = currentImageNum - 1,
     prevImgSrc = $('#' + prevImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(prevImgSrc);
@@ -307,7 +310,7 @@ $('#prev_img').click(function (event) {
 });
 
 $('#next_img').click(function (event) {
-  var currentImageNum = event.id,
+  var currentImageNum = event.name,
     nextImgNum = currentImageNum + 1,
     nextImgSrc = $('#' + nextImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
