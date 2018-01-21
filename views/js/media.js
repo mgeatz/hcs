@@ -299,15 +299,14 @@ $('#docs').click(function () {
 });
 
 $('#prev_img').click(function (event) {
-  var currentImageNum = event.target.name,
-    prevImgNum = parseInt(currentImageNum) - 1,
+  var prevImgNum = event.target.name,
       prevImgSrc = $('#a' + prevImgNum.toString() + '')[0].currentSrc;
 
     $('#previewer_modal').find('.file_name').text(prevImgSrc);
     $('#previewer_modal').find('#img_num').text(prevImgNum);
 
-    $('#previewer_modal').find('#prev_img').text(currentImageNum-1);
-    $('#previewer_modal').find('#next_img').text(currentImageNum+1);
+    $('#previewer_modal').find('#prev_img').text(prevImgNum-1);
+    $('#previewer_modal').find('#next_img').text(prevImgNum+1);
 
     $('#previewer_modal').find('#current_image_preview_img').attr('src', prevImgSrc);
     $('#previewer_modal').find('#current_image_preview_link').attr('href', prevImgSrc);
@@ -315,15 +314,14 @@ $('#prev_img').click(function (event) {
 });
 
 $('#next_img').click(function (event) {
-  var currentImageNum = event.target.name,
-    nextImgNum = parseInt(currentImageNum) + 1,
+  var nextImageNum = event.target.name,
     nextImgSrc = $('#a' + nextImgNum.toString() + '')[0].currentSrc;
 
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
   $('#previewer_modal').find('#img_num').text(nextImgNum);
 
-  $('#previewer_modal').find('#prev_img').text(currentImageNum-1);
-  $('#previewer_modal').find('#next_img').text(currentImageNum+1);
+  $('#previewer_modal').find('#prev_img').text(nextImageNum-1);
+  $('#previewer_modal').find('#next_img').text(nextImageNum+1);
 
   $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
   $('#previewer_modal').find('#current_image_preview_link').attr('href', nextImgSrc);
