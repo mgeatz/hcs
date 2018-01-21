@@ -314,7 +314,7 @@ $('#prev_img').click(function (event) {
 });
 
 $('#next_img').click(function (event) {
-  var nextImageNum = event.target.name,
+  var nextImgNum = event.target.name,
     nextImgSrc = $('#a' + nextImgNum.toString() + '')[0].currentSrc;
 
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
