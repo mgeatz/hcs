@@ -300,7 +300,7 @@ $('#docs').click(function () {
 
 $('#prev_img').click(function (event) {
   var currentImageNum = event.target.name,
-    prevImgNum = currentImageNum - 1,
+    prevImgNum = parseInt(currentImageNum) - 1,
     prevImgSrc = $('#' + prevImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(prevImgSrc);
   $('#previewer_modal').find('#img_num').text(prevImgNum);
@@ -311,7 +311,7 @@ $('#prev_img').click(function (event) {
 
 $('#next_img').click(function (event) {
   var currentImageNum = event.target.name,
-    nextImgNum = currentImageNum + 1,
+    nextImgNum = parseInt(currentImageNum) + 1,
     nextImgSrc = $('#' + nextImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
   $('#previewer_modal').find('#img_num').text(nextImgNum);
