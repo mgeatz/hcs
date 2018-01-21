@@ -299,7 +299,7 @@ $('#docs').click(function () {
 });
 
 $('#prev_img').click(function (event) {
-  var prevImgNum = (event.target.name === -1) ? 0 : event.target.name,
+  var prevImgNum = (event.target.name == -1) ? 0 : event.target.name,
       prevImgSrc = $('#a' + prevImgNum.toString() + '')[0].currentSrc;
 
     $('#previewer_modal').find('.file_name').text(prevImgSrc);
