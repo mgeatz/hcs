@@ -301,7 +301,7 @@ $('#docs').click(function () {
 $('#prev_img').click(function (event) {
   var currentImageNum = event.target.name,
     prevImgNum = parseInt(currentImageNum) - 1,
-    prevImgSrc = $('#' + prevImgNum + '').src;
+    prevImgSrc = $('#' + prevImgNum.toString() + '').src;
   $('#previewer_modal').find('.file_name').text(prevImgSrc);
   $('#previewer_modal').find('#img_num').text(prevImgNum);
   $('#previewer_modal').find('#current_image_preview_img').attr('src', prevImgSrc);
@@ -312,7 +312,7 @@ $('#prev_img').click(function (event) {
 $('#next_img').click(function (event) {
   var currentImageNum = event.target.name,
     nextImgNum = parseInt(currentImageNum) + 1,
-    nextImgSrc = $('#' + nextImgNum + '').src;
+    nextImgSrc = $('#' + nextImgNum.toString() + '').src;
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
   $('#previewer_modal').find('#img_num').text(nextImgNum);
   $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
