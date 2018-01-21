@@ -44,7 +44,7 @@ var fetchResources = function (resourceType, targetId) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
-          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer">OPEN</button>' +
+          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="\' + file + \'">OPEN</button>' +
           '&nbsp;&nbsp;<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sub>Select bulk edit: </sub><input type="checkbox" class="bulk_in" '+
           'fileName="' + file + '" style="width:15px;"/></div>');
