@@ -14,6 +14,10 @@ body {
     font-size: 16px;
 }
 
+img {
+    image-orientation: from-image;
+}
+
 .row {
     margin-top: 80px;
 }
