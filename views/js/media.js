@@ -44,7 +44,7 @@ var fetchResources = function (resourceType, targetId) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img id="'+i+'" height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
-          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="' + file + '" num="'+i+'">OPEN</button>' +
+          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="' + file + '" name="'+i+'">OPEN</button>' +
           '&nbsp;&nbsp;<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sub>Select bulk edit: </sub><input type="checkbox" class="bulk_in" '+
           'fileName="' + file + '" style="width:15px;"/></div>');
@@ -271,7 +271,7 @@ $('#bulk_edit_modal').on('show.bs.modal', function (event) {
 
 $('#previewer_modal').on('show.bs.modal', function (event) {
   var file = event.relatedTarget.slot,
-    num = event.relatedTarget.num,
+    num = event.relatedTarget.name,
     modal = $(this);
 
   window.stop();
@@ -295,7 +295,7 @@ $('#docs').click(function () {
   getMedia('docs');
 });
 
-$('#prev_img').click(function () {
+$('#prev_img').click(function (event) {
   var currentImageNum = $('#img_num').id,
     prevImgNum = currentImageNum - 1,
     prevImgSrc = $('#' + prevImgNum + '').src;
@@ -306,8 +306,8 @@ $('#prev_img').click(function () {
   console.log('currentImageNum');
 });
 
-$('#next_img').click(function () {
-  var currentImageNum = $('#img_num').id,
+$('#next_img').click(function (event) {
+  var currentImageNum = event.id,
     nextImgNum = currentImageNum + 1,
     nextImgSrc = $('#' + nextImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
