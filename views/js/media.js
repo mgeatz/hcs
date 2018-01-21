@@ -297,9 +297,10 @@ $('#docs').click(function () {
 
 $('#prev_img').click(function () {
   var currentImageNum = $('#img_num'),
-    prevImgSrc = $('#' + [currentImageNum - 1] + '').src;
+    prevImgNum = currentImageNum - 1,
+    prevImgSrc = $('#' + prevImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(prevImgSrc);
-  $('#previewer_modal').find('#img_num').text([currentImageNum - 1]);
+  $('#previewer_modal').find('#img_num').text(prevImgNum);
   $('#previewer_modal').find('#current_image_preview_img').attr('src', prevImgSrc);
   $('#previewer_modal').find('#current_image_preview_link').attr('href', prevImgSrc);
   console.log('currentImageNum');
@@ -307,9 +308,10 @@ $('#prev_img').click(function () {
 
 $('#next_img').click(function () {
   var currentImageNum = $('#img_num'),
-    nextImgSrc = $('#' + [currentImageNum + 1] + '').src;
+    nextImgNum = currentImageNum + 1,
+    nextImgSrc = $('#' + nextImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
-  $('#previewer_modal').find('#img_num').text([currentImageNum + 1]);
+  $('#previewer_modal').find('#img_num').text(nextImgNum);
   $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
   $('#previewer_modal').find('#current_image_preview_link').attr('href', nextImgSrc);
   console.log('currentImageNum');
