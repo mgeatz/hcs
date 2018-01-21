@@ -44,7 +44,7 @@ var fetchResources = function (resourceType, targetId) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
           ' display:inline-block; margin: 5px;"><img id="a'+i+'" height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
-          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="' + file + '" name="'+i+'">OPEN</button>' +
+          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" title="' + file + '" name="'+i+'">OPEN</button>' +
           '&nbsp;&nbsp;<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sub>Select bulk edit: </sub><input type="checkbox" class="bulk_in" '+
           'fileName="' + file + '" style="width:15px;"/></div>');
@@ -270,7 +270,7 @@ $('#bulk_edit_modal').on('show.bs.modal', function (event) {
 });
 
 $('#previewer_modal').on('show.bs.modal', function (event) {
-  var file = event.relatedTarget.slot,
+  var file = event.relatedTarget.title,
     num = event.relatedTarget.name,
     modal = $(this);
 
