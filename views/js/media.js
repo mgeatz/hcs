@@ -40,11 +40,11 @@ var fetchResources = function (resourceType, targetId) {
 
       $media.html('');
 
-      filesRequested.forEach(function (file) {
+      filesRequested.forEach(function (file, i) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
-          ' display:inline-block; margin: 5px;"><img height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
-          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="' + file + '">OPEN</button>' +
+          ' display:inline-block; margin: 5px;"><img id="'+i+'" height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
+          '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".previewer" slot="' + file + '" num="'+i+'">OPEN</button>' +
           '&nbsp;&nbsp;<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sub>Select bulk edit: </sub><input type="checkbox" class="bulk_in" '+
           'fileName="' + file + '" style="width:15px;"/></div>');
@@ -271,11 +271,13 @@ $('#bulk_edit_modal').on('show.bs.modal', function (event) {
 
 $('#previewer_modal').on('show.bs.modal', function (event) {
   var file = event.relatedTarget.slot,
+    num = event.relatedTarget.num,
     modal = $(this);
 
   window.stop();
 
   modal.find('.file_name').text(file);
+  modal.find('#img_num').text(num);
   modal.find('#current_image_preview_img').attr('src', file);
   modal.find('#current_image_preview_link').attr('href', file);
 });
@@ -293,3 +295,22 @@ $('#docs').click(function () {
   getMedia('docs');
 });
 
+$('#prev_img').click(function () {
+  var currentImageNum = $('#img_num'),
+    prevImgSrc = $('#' + [currentImageNum - 1] + '').src;
+  $('#previewer_modal').find('.file_name').text(prevImgSrc);
+  $('#previewer_modal').find('#img_num').text([currentImageNum - 1]);
+  $('#previewer_modal').find('#current_image_preview_img').attr('src', prevImgSrc);
+  $('#previewer_modal').find('#current_image_preview_link').attr('href', prevImgSrc);
+  console.log('currentImageNum');
+});
+
+$('#next_img').click(function () {
+  var currentImageNum = $('#img_num'),
+    nextImgSrc = $('#' + [currentImageNum + 1] + '').src;
+  $('#previewer_modal').find('.file_name').text(nextImgSrc);
+  $('#previewer_modal').find('#img_num').text([currentImageNum + 1]);
+  $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
+  $('#previewer_modal').find('#current_image_preview_link').attr('href', nextImgSrc);
+  console.log('currentImageNum');
+});
