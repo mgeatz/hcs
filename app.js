@@ -115,7 +115,7 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
             let splitBTAG = file.split('BTAG_');
 
             if (splitBTAG.length > 1) {
-              
+
             } else {
               if (mediaType === '.jpg' || mediaType === '.png') {
                 //console.log('/tray' + routePath + '/root/media/', file);

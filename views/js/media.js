@@ -43,7 +43,7 @@ var fetchResources = function (resourceType, targetId) {
       filesRequested.forEach(function (file) {
 
         $media.append('<div style="background: #ddd; border: 5px solid #ddd; border-radius: 2px;' +
-          ' display:inline-block; margin: 5px;"><img height="100" src="' + file + '" style="margin-bottom:10px"/><br>' +
+          ' display:inline-block; margin: 5px;"><img height="200" src="' + file + '" style="margin-bottom:10px"/><br>' +
           '<a href="' + file + '" target="_blank"><u>OPEN</u></a>&nbsp;&nbsp;' +
           '<button class="' + file + 'btn btn-default btn-xs" data-toggle="modal" data-target=".edit"' +
           ' id="' + file + '">EDIT</button><br><sub>Select bulk edit: </sub><input type="checkbox" class="bulk_in" '+
