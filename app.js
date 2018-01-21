@@ -112,9 +112,15 @@ app.get(api.v1.mediaFiles + '/:routePath' + '/:resourceType?' + '/:tag?', functi
           // example file name: Sun-Jan-14-2018-15-BTAG_New_TAGE-1_wizard.jpg
 
           if (tag === 'tag_less') {
-            if (mediaType === '.jpg' || mediaType === '.png') {
-              //console.log('/tray' + routePath + '/root/media/', file);
-              mediaArray.push('/tray' + routePath + '/root/media/' + file);
+            let splitBTAG = file.split('BTAG_');
+
+            if (splitBTAG.length > 1) {
+              
+            } else {
+              if (mediaType === '.jpg' || mediaType === '.png') {
+                //console.log('/tray' + routePath + '/root/media/', file);
+                mediaArray.push('/tray' + routePath + '/root/media/' + file);
+              }
             }
           } else {
             let splitBTAG = file.split('BTAG_');
