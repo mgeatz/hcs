@@ -296,7 +296,7 @@ $('#docs').click(function () {
 });
 
 $('#prev_img').click(function () {
-  var currentImageNum = $('#img_num'),
+  var currentImageNum = $('#img_num').id,
     prevImgNum = currentImageNum - 1,
     prevImgSrc = $('#' + prevImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(prevImgSrc);
@@ -307,7 +307,7 @@ $('#prev_img').click(function () {
 });
 
 $('#next_img').click(function () {
-  var currentImageNum = $('#img_num'),
+  var currentImageNum = $('#img_num').id,
     nextImgNum = currentImageNum + 1,
     nextImgSrc = $('#' + nextImgNum + '').src;
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
