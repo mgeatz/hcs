@@ -278,8 +278,8 @@ $('#previewer_modal').on('show.bs.modal', function (event) {
 
   modal.find('.file_name').text(file);
   modal.find('#img_num').text(num);
-  modal.find('#prev_img').attr('name', num);
-  modal.find('#next_img').attr('name', num);
+  modal.find('#prev_img').attr('name', parseInt(num)-1);
+  modal.find('#next_img').attr('name', parseInt(num)+1);
 
   modal.find('#current_image_preview_img').attr('src', file);
   modal.find('#current_image_preview_link').attr('href', file);
@@ -301,22 +301,24 @@ $('#docs').click(function () {
 $('#prev_img').click(function (event) {
   var currentImageNum = event.target.name,
     prevImgNum = parseInt(currentImageNum) - 1,
-    prevImgSrc = $('#' + prevImgNum.toString() + '')[0].currentSrc;
-  $('#previewer_modal').find('.file_name').text(prevImgSrc);
-  $('#previewer_modal').find('#img_num').text(prevImgNum);
+      prevImgSrc = $('#' + prevImgNum.toString() + '')[0].currentSrc;
 
-  $('#previewer_modal').find('#prev_img').text(currentImageNum-1);
-  $('#previewer_modal').find('#next_img').text(currentImageNum+1);
+    $('#previewer_modal').find('.file_name').text(prevImgSrc);
+    $('#previewer_modal').find('#img_num').text(prevImgNum);
 
-  $('#previewer_modal').find('#current_image_preview_img').attr('src', prevImgSrc);
-  $('#previewer_modal').find('#current_image_preview_link').attr('href', prevImgSrc);
-  console.log('currentImageNum');
+    $('#previewer_modal').find('#prev_img').text(currentImageNum-1);
+    $('#previewer_modal').find('#next_img').text(currentImageNum+1);
+
+    $('#previewer_modal').find('#current_image_preview_img').attr('src', prevImgSrc);
+    $('#previewer_modal').find('#current_image_preview_link').attr('href', prevImgSrc);
+
 });
 
 $('#next_img').click(function (event) {
   var currentImageNum = event.target.name,
     nextImgNum = parseInt(currentImageNum) + 1,
     nextImgSrc = $('#' + nextImgNum.toString() + '')[0].currentSrc;
+
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
   $('#previewer_modal').find('#img_num').text(nextImgNum);
 
@@ -325,5 +327,5 @@ $('#next_img').click(function (event) {
 
   $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
   $('#previewer_modal').find('#current_image_preview_link').attr('href', nextImgSrc);
-  console.log('currentImageNum');
+  
 });
