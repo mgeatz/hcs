@@ -320,8 +320,8 @@ $('#next_img').click(function (event) {
   $('#previewer_modal').find('.file_name').text(nextImgSrc);
   $('#previewer_modal').find('#img_num').text(nextImgNum);
 
-  $('#previewer_modal').find('#prev_img').text(nextImageNum-1);
-  $('#previewer_modal').find('#next_img').text(nextImageNum+1);
+  $('#previewer_modal').find('#prev_img').text(nextImgNum-1);
+  $('#previewer_modal').find('#next_img').text(nextImgNum+1);
 
   $('#previewer_modal').find('#current_image_preview_img').attr('src', nextImgSrc);
   $('#previewer_modal').find('#current_image_preview_link').attr('href', nextImgSrc);
