@@ -39,6 +39,7 @@ $('#upload-input').on('change', function () {
             $progressBar.width(percentComplete + '%');
             if (percentComplete === 100) {
               $progressBar.html('Done');
+              $('#success_messaging').html('<a href="/media">Go To Your Files</a>');
             }
           }
         }, false);
