@@ -95,7 +95,7 @@ input {
     border-radius: 3px;
 }
 
-.upload_btn {
+#upload_btn {
     position: absolute;
     margin: auto;
     z-index: 1;
