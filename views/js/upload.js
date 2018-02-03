@@ -1,3 +1,6 @@
+$('.progress').hide();
+$('#upload_controls').show();
+
 $('.upload-btn').on('click', function () {
   var $progressBar = $('.progress-bar');
   $('#upload-input').click();
@@ -5,6 +8,10 @@ $('.upload-btn').on('click', function () {
   $progressBar.width('0%');
 });
 $('#upload-input').on('change', function () {
+
+  $('.progress').show();
+  $('#upload_controls').hide();
+
   var files = $(this).get(0).files,
     $progressBar = $('.progress-bar');
   if (files.length > 0) {

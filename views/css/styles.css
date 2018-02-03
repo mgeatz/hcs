@@ -110,3 +110,10 @@ input {
 p.panel-title a {
     color: #bbb;
 }
+
+div#accordion {
+    width: 500px;
+    margin: auto;
+}
+
+

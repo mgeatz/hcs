@@ -66,14 +66,16 @@
                     </div>
 
                     <h4><a href="/media"><u>Search All Media</u></a></h4>
-                    <div class="progress">
+                    <div class="progress hidden">
                         <div class="progress-bar" role="progressbar"></div>
                     </div>
-                    <input type="text" placeholder="Enter Tag For Upload"/>
-                    <br><br>
-                    <button id="upload_btn" class="btn btn-lg btn-success" type="button">Upload File</button>
-                    <input id="upload-input" type="file" name="uploads[]" multiple="multiple">
 
+                    <div id="upload_controls">
+                        <input type="text" placeholder="Enter Tag For Upload"/>
+                        <br><br>
+                        <button id="upload_btn" class="btn btn-lg btn-success" type="button">Upload File</button>
+                        <input id="upload-input" type="file" name="uploads[]" multiple="multiple">
+                    </div>
                 </div>
             </div>
             <sup>Files are uploaded to Tray 1</sup>
