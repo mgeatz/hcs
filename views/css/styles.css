@@ -18,6 +18,10 @@ img {
     image-orientation: from-image;
 }
 
+li {
+    text-align: left;
+}
+
 .row {
     margin-top: 80px;
 }
