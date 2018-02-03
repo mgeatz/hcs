@@ -58,7 +58,11 @@ h2 {
 }
 
 #upload-input {
-    display: none;
+    display: inline;
+    width: 132px;
+    height: 48px;
+    margin: auto;
+    position: relative;
 }
 
 @media (min-width: 768px) {
@@ -89,4 +93,11 @@ input {
     padding: 1px 10px;
     border: 1.5px solid #eee;
     border-radius: 3px;
+}
+
+.upload_btn {
+    position: absolute;
+    margin: auto;
+    z-index: 1;
+    pointer-events: none;
 }
