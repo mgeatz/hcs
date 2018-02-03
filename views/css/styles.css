@@ -63,6 +63,7 @@ h2 {
     height: 48px;
     margin: auto;
     position: relative;
+    border: none;
 }
 
 @media (min-width: 768px) {
