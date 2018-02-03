@@ -106,3 +106,7 @@ input {
     z-index: 1;
     pointer-events: none;
 }
+
+p.panel-title a {
+    color: #bbb;
+}
