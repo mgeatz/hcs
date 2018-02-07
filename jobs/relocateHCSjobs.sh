@@ -13,3 +13,7 @@ cp ./propagate/mvTrayFourToBackup.sh /etc/cron.weekly
 cp ./propagate/mvTrayOneToTrayTwo.sh /etc/cron.weekly
 cp ./propagate/mvTrayTwoToTrayThree.sh /etc/cron.weekly
 cp ./propagate/mvTrayThreeToTrayFour.sh /etc/cron.monthly
+
+chmod -R 755 /etc/cron.daily
+chmod -R 755 /etc/cron.weekly
+chmod -R 755 /etc/cron.monthly

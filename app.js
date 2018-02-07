@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
   if (whitelist.indexOf(clientIp) !== -1) {
     next();
   } else {
-    console.log('Non-whitelist IP address attempted access', clientIp);
+    console.log('ERROR CODE: 001', clientIp);
     return false;
   }
 });

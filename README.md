@@ -30,8 +30,32 @@ Follow the instructions:
 
 1. Configure SSMTP on your HCS host machine. SSMTP configuration management located at `cd ~/../../etc/ssmtp/ssmtp.config`. You can paste the example ssmtp.config below. 
 2. Update each .sh script in the hcs/jobs directory with your preferred To and From email addresses. 
-3. `cd` into the hcs/jobs directory and run `bash relocateHCSjobs.sh`
+3. `cd` into the hcs/jobs directory and run `sudo bash relocateHCSjobs.sh`
+4. `cd` into /etc/cron.daily run `crontab -e` and append the following 
+```
+0 0 * * * /etc/cron.daily/backupUse.sh
+0 0 * * * /etc/cron.daily/diskSpaceInfoCheck.sh
+0 0 * * * /etc/cron.daily/trayOneUse.sh
+0 0 * * * /etc/cron.daily/trayTwoUse.sh
+0 0 * * * /etc/cron.daily/trayThreeUse.sh
+0 0 * * * /etc/cron.daily/trayFourUse.sh
+```
+7.Hit the ESC key and type `:wq`
 
+8.`cd` into /etc/cron.weekly run `crontab -e` and append the following
+```
+0 0 * * * /etc/cron.weekly/mvTrayFourToBackup.sh
+0 0 * * * /etc/cron.weekly/mvTrayOneToTrayTwo.sh
+0 0 * * * /etc/cron.weekly/mvTrayTwoToTrayThree.sh
+```
+7.Hit the ESC key and type `:wq`
+
+8.`cd` into /etc/cron.monthly run `crontab -e` and append the following
+```
+0 0 * * * /etc/cron.weekly/mvTrayThreeToTrayFour.sh
+```
+
+###### SSMTP Configs for your ssmtp.config file:
 
 ```
 # ssmtp.config:
