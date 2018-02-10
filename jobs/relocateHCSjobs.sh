@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 # Move monitoring scripts to daily crontab
-cp ./monitor/backupUse.sh /etc/cron.daily
-cp ./monitor/diskSpaceInfoCheck.sh /etc/cron.daily
-cp ./monitor/trayOneUse.sh /etc/cron.daily
-cp ./monitor/trayTwoUse.sh /etc/cron.daily
-cp ./monitor/trayThreeUse.sh /etc/cron.daily
-cp ./monitor/trayFourUse.sh /etc/cron.daily
+mv ./monitor/backupUse.sh /etc/cron.daily
+mv ./monitor/diskSpaceInfoCheck.sh /etc/cron.daily
+mv ./monitor/trayOneUse.sh /etc/cron.daily
+mv ./monitor/trayTwoUse.sh /etc/cron.daily
+mv ./monitor/trayThreeUse.sh /etc/cron.daily
+mv ./monitor/trayFourUse.sh /etc/cron.daily
 
 # Move propagating scripts to respective crontab
-cp ./propagate/mvTrayFourToBackup.sh /etc/cron.weekly
-cp ./propagate/mvTrayOneToTrayTwo.sh /etc/cron.weekly
-cp ./propagate/mvTrayTwoToTrayThree.sh /etc/cron.weekly
-cp ./propagate/mvTrayThreeToTrayFour.sh /etc/cron.monthly
+mv ./propagate/mvTrayFourToBackup.sh /etc/cron.weekly
+mv ./propagate/mvTrayOneToTrayTwo.sh /etc/cron.weekly
+mv ./propagate/mvTrayTwoToTrayThree.sh /etc/cron.weekly
+mv ./propagate/mvTrayThreeToTrayFour.sh /etc/cron.monthly
 
 chmod -R 755 /etc/cron.daily
 chmod -R 755 /etc/cron.weekly
