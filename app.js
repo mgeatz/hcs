@@ -7,6 +7,8 @@ let express = require('express'),
   config = require('config'),
   api = config.get('api');
 
+let indexRouter = require('./routes/index');
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ***** WHITELIST ***** //

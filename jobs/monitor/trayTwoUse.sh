@@ -5,15 +5,13 @@
 
 # When Use% >= 70% this script will execute bash ~/hcs/move/mvTrayTwoToTrayThree.sh
 
-STR="$(df -h)"
+STR="$(df -h /tray2)"
 
-node ~/Documents/hcs/jobs/keep/createWarningFile.js "${STR}" 70 "tray1"
+node ~/Documents/hcs/jobs/keep/createWarningFile.js "${STR}" 70 "tray2"
 
-if [ ! -f ~/Documents/hcs/jobs/keep/warn_tray1_70.txt ]; then
-  echo "All Clear :)"
+if [ ! -f ~/Documents/hcs/jobs/keep/warn_tray2_70.txt ]; then
+  echo "Tray 2 All Clear :)"
 else
-  echo "warning.txt file was found ... execute propagation sequence."
-
-
-
+  echo "warn_tray2_70.txt file was found ... execute propagation sequence."
+  bash /etc/cron.weekly/mvTrayTwoToTrayThree.sh
 fi
