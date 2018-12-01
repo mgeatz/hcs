@@ -77,3 +77,18 @@ Follow the instructions:
 3. Grant IPs access to your HCS by updating the "whitelist" property.
 
 
+
+#!/bin/sh
+
+git clone https://github.com/mgeatz/AEM-Weather-App
+git clone https://github.com/mgeatz/Alexa-Blue-Jean-Skill
+git clone https://github.com/mgeatz/hcs.git
+git clone https://github.com/mgeatz/Java-API.git
+git clone https://github.com/mgeatz/java-blockchain.git
+git clone https://github.com/mgeatz/LemurCode.git
+git clone https://github.com/mgeatz/michaelgeatz.git
+git clone https://github.com/mgeatz/phonegap-app-developer.git
+git clone https://github.com/mgeatz/RESTUP.git
+git clone https://github.com/mgeatz/skolvikes.git
+git clone https://github.com/mgeatz/up.git
+
